@@ -49,21 +49,21 @@ const portfolioData = {
   "projects": [
     {
       "title": "Envoy",
-      "url": "#",
+      "url": "https://github.com/aniketpathak028/envoy",
       "description": "Email management solution to send, track and schedule email across timezones.",
       "technologies": ["Spring Boot", "Java", "Quartz Scheduler"]
     },
     {
       "title": "Flexboard",
-      "url": "#",
+      "url": "https://github.com/dorbus/flexboard",
       "description": "React component library for resizable sidebars.",
       "technologies": ["React", "Typescript"]
     },
     {
-      "title": "Network Traffic Classification",
-      "url": "#",
-      "description": "Deep Learning model fine tuned to classify network traffic.",
-      "technologies": ["SKlearn", "Streamlit"]
+      "title": "Network Traffic Analyzer",
+      "url": "",
+      "description": "building..",
+      "technologies": []
     }
   ]
 }
