@@ -105,20 +105,19 @@ i {
   position: relative;
 }
 
-/* Time display - repositioned */
-.time-display {
+.greetings-display {
   position: absolute;
   top: 1rem;
   right: 1rem;
   text-align: right;
   font-size: 0.8rem;
   opacity: 0.7;
-  background-color: var(--card-background);
-  padding: 0.3rem 0.6rem;
+  padding: 0.3rem 0;
   border-radius: 4px;
   z-index: 50;
-  max-width: 150px; /* Added to accommodate longer text */
-  white-space: nowrap; /* Keep text on one line */
+  max-width: 150px;
+  white-space: nowrap;
+  background-color: transparent;
 }
 
 .main-content {
@@ -136,25 +135,24 @@ i {
   transition: opacity 0.5s ease, transform 0.5s ease;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Keep this for scrolling */
-  padding-bottom: 80px; /* Increased to prevent content overlap with footer */
+  overflow-y: auto;
+  padding-bottom: 80px;
 }
 
 .content-section.active {
   opacity: 1;
   z-index: 10;
   transform: translateY(0);
-  visibility: visible; /* Add this */
+  visibility: visible;
 }
 
 .content-section.hidden {
   opacity: 0;
   z-index: -1;
   transform: translateY(20px);
-  visibility: hidden; /* Add this */
+  visibility: hidden;
 }
 
-/* Hero section */
 .hero {
   height: 100%;
   display: flex;
@@ -179,7 +177,6 @@ i {
   font-size: 0.95rem;
 }
 
-/* Social icons styling - redesigned to be minimalistic */
 .hero-icons {
   display: flex;
   align-items: center;
@@ -187,7 +184,7 @@ i {
   padding-top: 0.5rem;
   margin-bottom: 1rem;
   width: 100%;
-  justify-content: flex-start; /* Default for larger screens */
+  justify-content: flex-start;
 }
 
 .social-icon {
@@ -216,13 +213,12 @@ i {
   color: white;
 }
 
-/* Section Links Styles - now below social icons */
 .section-links {
   display: flex;
   flex-wrap: wrap;
   margin-top: 0.5rem;
   width: 100%;
-  justify-content: flex-start; /* Default for larger screens */
+  justify-content: flex-start;
 }
 
 .section-link {
@@ -258,7 +254,6 @@ i {
   color: var(--primary-color);
 }
 
-/* Content wrapper for narrower content */
 .content-wrapper {
   max-width: 700px;
   margin: 0 auto;
@@ -267,10 +262,9 @@ i {
   flex-direction: column;
   min-height: auto;
   padding-bottom: 20px;
-  padding-top: 2rem; /* Add this to push content down a bit */
+  padding-top: 2rem;
 }
 
-/* Improved Section header with back arrow */
 .section-header {
   display: flex;
   justify-content: center;
@@ -292,7 +286,6 @@ i {
   color: var(--primary-color);
 }
 
-/* Improved back arrow positioning */
 .back-arrow {
   position: fixed;
   top: 1.5rem;
@@ -320,7 +313,6 @@ i {
   color: white;
 }
 
-/* Experience Section - Redesigned more compact */
 .experience-container {
   display: flex;
   flex-direction: column;
@@ -333,9 +325,9 @@ i {
   gap: 0.5rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1.5rem;
-  opacity: 1; /* Change from 0 to 1 */
-  transform: none; /* Change from translateY(20px) */
-  transition: none; /* Remove transition */
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .experience-item.fade-in {
@@ -387,7 +379,6 @@ i {
   transform: translateY(-2px);
 }
 
-/* Projects Section - Now matching experience layout with pagination */
 .projects-container {
   display: flex;
   flex-direction: column;
@@ -399,9 +390,9 @@ i {
   flex-direction: column;
   gap: 0.5rem;
   padding-bottom: 1.5rem;
-  opacity: 1; /* Change from 0 to 1 */
-  transform: none; /* Change from translateY(20px) */
-  transition: none; /* Remove transition */
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .project-item.fade-in {
@@ -420,7 +411,6 @@ i {
   font-size: 0.85rem;
 }
 
-/* Pagination controls */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -442,7 +432,6 @@ i {
   background-color: var(--primary-color);
 }
 
-/* Footer styles */
 .footer {
   text-align: center;
   padding: 1rem 0;
@@ -457,7 +446,6 @@ i {
   z-index: 15;
 }
 
-/* Responsive styles for different screen sizes */
 @media screen and (max-width: 480px) {
   .hero-text {
     font-size: 0.85rem;
@@ -482,7 +470,6 @@ i {
   }
 }
 
-/* Add a smoother transition for mid-sized screens */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .hero {
     padding-top: 1.5rem;
@@ -571,10 +558,9 @@ i {
   }
 }
 
-/* Improved breakpoint handling */
 @media screen and (max-width: 480px) {
   .hero-text {
-    font-size: 0.8rem; /* Smaller text on mobile */
+    font-size: 0.8rem;
     text-align: center;
   }
   
@@ -584,11 +570,10 @@ i {
   }
   
   html, body {
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    overflow-x: hidden;
   }
 }
 
-/* Better transition between mobile and tablet */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .hero {
     padding-top: 2rem;
@@ -607,7 +592,6 @@ i {
   }
 }
 
-/* Improved tablet to desktop transition */
 @media screen and (min-width: 769px) {
   .hero {
     flex-direction: row;
@@ -637,21 +621,18 @@ i {
     margin: 0 auto 0.5rem;
   }
   
-  /* Simplified intro text for mobile */
   .mobile-intro-text {
     text-align: center;
     font-size: 0.85rem;
     margin: 0 auto;
   }
-  
-  /* Smaller footer on mobile */
+
   .footer {
     padding: 0.5rem 0;
     font-size: 0.65rem;
   }
 }
 
-/* Ensure social links adjust correctly on resize */
 @media screen and (min-width: 769px) {
   .hero-icons, .section-links {
     justify-content: flex-start;
@@ -672,11 +653,54 @@ i {
     align-items: center;
     width: 100%;
   }
+
+  .section-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem auto 0;
+  }
+  
+  .section-link {
+    margin: 0 0.75rem 0.75rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
-  /* Hide timer in experience and project sections */
-  .content-section.active:not(#home) ~ .time-display {
+  .content-section.active:not(#home) ~ .greetings-display {
     display: none;
+  }
+  .section-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+  }
+  
+  .section-link {
+    margin: 0 0.5rem 0.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .greetings-display {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .experience-role,
+  .project-title {
+    font-size: 0.9rem; /* Reduce title size */
+  }
+
+  .experience-description,
+  .project-description {
+    font-size: 0.75rem; /* Reduce description size */
+  }
+
+  .technology-tags {
+    font-size: 0.7rem; /* Reduce tag size */
   }
 }

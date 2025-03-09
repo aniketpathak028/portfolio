@@ -1,4 +1,4 @@
-// Data for dynamic content
+// portfolio data
 const portfolioData = {
   "personal": {
     "name": "Aniket Pathak",
@@ -68,23 +68,18 @@ const portfolioData = {
   ]
 }
 
-
-// DOM elements
 const body = document.querySelector("body");
-const timeDisplay = document.getElementById("current-time");
+const greetingsDisplay = document.getElementById("current-greetings");
 const mainContainer = document.querySelector(".container");
 
-// Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded");
-    // Initialize content
     loadDynamicContent();
     setupNavigation();
     applyColorMode();
     handleResponsiveLayout();
     
     // Display greeting instead of time
-    // updateGreeting();
+    updateGreeting();
     setInterval(updateGreeting, 60000);
     
     // Check for URL hash on load and navigate accordingly
@@ -96,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Replace updateTime function with updateGreeting
 function updateGreeting() {
   const now = new Date();
   const hour = now.getHours();
@@ -104,17 +98,17 @@ function updateGreeting() {
   
   if (hour >= 5 && hour < 12) {
     greeting = "good morning! 🌞";
-  } else if (hour >= 12 && hour < 18) {
+  } else if (hour >= 12 && hour < 17) {
     greeting = "good afternoon! 🌤️";
-  } else if (hour >= 18 && hour < 22) {
+  } else if (hour >= 17 && hour < 22) {
     greeting = "good evening! 🌙";
   } else {
     greeting = "nighty night! 💤";
   }
   
-  const timeDisplay = document.getElementById("current-time");
-  if (timeDisplay) {
-    timeDisplay.textContent = greeting;
+  const greetingsDisplay = document.getElementById("current-greetings");
+  if (greetingsDisplay) {
+    greetingsDisplay.textContent = greeting;
   }
 }
 
@@ -272,11 +266,10 @@ function setupNavigation() {
 }
 
 // Function to show a specific section with smooth transitions
-// Function to show a specific section with smooth transitions
 function showSection(sectionId) {
   const contentSections = document.querySelectorAll('.content-section');
   const sectionLinks = document.querySelectorAll('.section-link');
-  const timeDisplay = document.getElementById('current-time');
+  const footer = document.querySelector('.footer');
   
   // Hide all sections
   contentSections.forEach(section => {
@@ -291,6 +284,13 @@ function showSection(sectionId) {
     link.classList.remove('active');
   });
   
+  // Show/hide footer based on section
+  if (sectionId === 'home') {
+    footer.style.display = 'block';
+  } else {
+    footer.style.display = 'none';
+  }
+  
   // Show the selected section
   const selectedSection = document.getElementById(sectionId);
   if (selectedSection) {
@@ -303,21 +303,10 @@ function showSection(sectionId) {
       if (sectionLink) {
         sectionLink.classList.add('active');
       }
-      
-      // Check if mobile and adjust timer visibility
-      if (window.innerWidth <= 480) {
-        timeDisplay.style.display = 'none';
-      }
-    } else {
-      // Always show timer on home section
-      timeDisplay.style.display = '';
     }
     
     // Animate items in the section
     animateContentItems(selectedSection);
-    
-    // Ensure footer is properly positioned
-    positionFooter();
   }
 }
 
@@ -418,50 +407,52 @@ function setupTouchGestures() {
   }
 }
 
-// Handle responsive layout
+// responsive layout
 function handleResponsiveLayout() {
   const width = window.innerWidth;
-  
-  // Set container width based on screen size for better proportionality
   if (width < 480) {
-    // Mobile adjustments
     adjustForMobile();
   } else if (width < 768) {
-    // Tablet adjustments
     adjustForTablet();
   } else {
-    // Desktop adjustments
     adjustForDesktop();
   }
   
-  // Ensure footer is properly positioned
   positionFooter();
 }
 
-// Mobile-specific adjustments
+// mobile
 function adjustForMobile() {
-  // Center align content
-  document.querySelectorAll('.hero-content, .section-links, .time-display, .footer').forEach(el => {
+  document.querySelectorAll('.hero-content, .section-links, .greetings-display, .footer').forEach(el => {
     el.style.textAlign = 'center';
   });
   
-  // Adjust hero image
   const heroImage = document.querySelector('.hero-image');
   if (heroImage) {
     heroImage.style.maxWidth = '150px';
     heroImage.style.margin = '0 auto 1rem auto';
   }
   
-  // Adjust back button size
   document.querySelectorAll('.back-arrow').forEach(arrow => {
     arrow.style.width = '30px';
     arrow.style.height = '30px';
     arrow.style.fontSize = '0.8rem';
-  });
+  }); 
+
+  const sectionLinks = document.querySelector('.section-links');
+  if (sectionLinks) {
+    sectionLinks.style.justifyContent = 'center';
+    sectionLinks.style.width = '100%';
+    sectionLinks.style.margin = '1rem auto 0';
+  }
   
-  // Adjust experience section for mobile
+  // Make sure each link has appropriate margins in mobile view
+  document.querySelectorAll('.section-link').forEach(link => {
+    link.style.margin = '0 0.5rem 0.5rem';
+    link.style.textAlign = 'center';
+  });
+
   document.querySelectorAll('.experience-header').forEach(header => {
-    // Swap order for mobile: date above role
     header.style.flexDirection = 'column-reverse';
     header.style.alignItems = 'flex-start';
     
@@ -472,42 +463,36 @@ function adjustForMobile() {
     }
   });
   
-  // Adjust time display for mobile
-  const timeEl = document.querySelector('.time-display');
+  const timeEl = document.querySelector('.greetings-display');
   if (timeEl) {
     timeEl.style.right = '50%';
     timeEl.style.transform = 'translateX(50%)';
   }
   
-  // Center the social icons on mobile
   const heroIcons = document.querySelector('.hero-icons');
   if (heroIcons) {
     heroIcons.style.justifyContent = 'center';
   }
 }
 
-// Tablet-specific adjustments
+// tablet
 function adjustForTablet() {
-  // Center hero content
   const heroContent = document.querySelector('.hero-content');
   if (heroContent) {
     heroContent.style.textAlign = 'center';
     heroContent.style.width = '100%';
   }
   
-  // Center social icons and section links
   document.querySelectorAll('.hero-icons, .section-links').forEach(el => {
     el.style.justifyContent = 'center';
   });
   
-  // Adjust hero image
   const heroImage = document.querySelector('.hero-image');
   if (heroImage) {
     heroImage.style.maxWidth = '220px';
     heroImage.style.margin = '0 auto 1.5rem auto';
   }
   
-  // Adjust experience section for tablet
   document.querySelectorAll('.experience-header').forEach(header => {
     header.style.flexDirection = 'row';
     header.style.alignItems = 'flex-start';
@@ -520,14 +505,12 @@ function adjustForTablet() {
   });
 }
 
-// Desktop-specific adjustments
+// desktop
 function adjustForDesktop() {
-  // Reset styles that might have been set for mobile/tablet
-  document.querySelectorAll('.hero-content, .section-links, .time-display, .footer').forEach(el => {
+  document.querySelectorAll('.hero-content, .section-links, .greetings-display, .footer').forEach(el => {
     el.style.textAlign = '';
   });
   
-  // Reset hero layout for desktop
   const heroImage = document.querySelector('.hero-image');
   if (heroImage) {
     if (window.innerWidth > 1025) {
@@ -536,7 +519,6 @@ function adjustForDesktop() {
     }
   }
   
-  // Reset experience header for desktop
   document.querySelectorAll('.experience-header').forEach(header => {
     header.style.flexDirection = 'row';
     header.style.alignItems = 'center';
@@ -548,8 +530,7 @@ function adjustForDesktop() {
     }
   });
   
-  // Reset time display position
-  const timeEl = document.querySelector('.time-display');
+  const timeEl = document.querySelector('.greetings-display');
   if (timeEl) {
     timeEl.style.right = '1rem';
     timeEl.style.transform = '';
@@ -561,24 +542,20 @@ function adjustForDesktop() {
     arrow.style.fontSize = '0.9rem';
   });
   
-  // Reset social icons alignment for desktop
   const heroIcons = document.querySelector('.hero-icons');
   if (heroIcons) {
     heroIcons.style.justifyContent = 'flex-start';
   }
 }
 
-// Ensure footer is properly positioned - replace your existing function
 function positionFooter() {
   const footer = document.querySelector('.footer');
   const mainContent = document.querySelector('.main-content');
   
   if (footer && mainContent) {
-    // Always keep footer fixed at bottom
     footer.style.position = 'fixed';
     footer.style.bottom = '0';
     
-    // Add padding to content to prevent overlap
     const activeSection = document.querySelector('.content-section.active');
     if (activeSection) {
       const footerHeight = footer.offsetHeight;
@@ -587,25 +564,20 @@ function positionFooter() {
   }
 }
 
-// Call on load and resize
 window.addEventListener('load', () => {
   console.log("Window loaded");
-  
-  // Check if social icons are rendered properly
   const heroIcons = document.querySelector('.hero-icons');
   if (heroIcons) {
     console.log("Social icons container content after window load:", heroIcons.innerHTML);
   }
 });
 
-// Responsive hero content
 function updateHeroContent() {
   const heroContent = document.querySelector('.hero-content');
   const isMobile = window.innerWidth <= 480;
   
   if (heroContent) {
     if (isMobile) {
-      // Generate social icons HTML for mobile view
       const socialIconsHTML = generateSocialIcons();
       
       heroContent.innerHTML = `
@@ -621,13 +593,11 @@ function updateHeroContent() {
         </div>
       `;
     } else {
-      // Use default content for larger screens
       loadDynamicContent();
     }
   }
 }
 
-// Call on load and resize
 window.addEventListener('load', updateHeroContent);
 window.addEventListener('resize', updateHeroContent);
 
@@ -637,18 +607,15 @@ function adjustLayoutOnResize() {
   const sectionLinks = document.querySelector('.section-links');
   
   if (window.innerWidth > 768) {
-    // Desktop layout
     if (heroContent) heroContent.style.order = "1";
     if (heroIcons) heroIcons.style.justifyContent = "flex-start";
     if (sectionLinks) sectionLinks.style.justifyContent = "flex-start";
   } else {
-    // Mobile/tablet layout
     if (heroContent) heroContent.style.order = "2";
     if (heroIcons) heroIcons.style.justifyContent = "center";
     if (sectionLinks) sectionLinks.style.justifyContent = "center";
   }
 }
 
-// Run on load and resize
 window.addEventListener('load', adjustLayoutOnResize);
 window.addEventListener('resize', adjustLayoutOnResize);
