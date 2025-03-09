@@ -619,3 +619,8 @@ function adjustLayoutOnResize() {
 
 window.addEventListener('load', adjustLayoutOnResize);
 window.addEventListener('resize', adjustLayoutOnResize);
+
+// Forces a repaint without affecting other browsers
+window.addEventListener("load", () => {
+  document.body.style.zoom = "1"; 
+});
