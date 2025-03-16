@@ -73,25 +73,16 @@ const greetingsDisplay = document.getElementById("current-greetings");
 const mainContainer = document.querySelector(".container");
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadDynamicContent();
-    setupNavigation();
-    applyColorMode();
-    handleResponsiveLayout();
-    
-    // Display greeting instead of time
-    updateGreeting();
-    setInterval(updateGreeting, 60000);
-    
-    // Check for URL hash on load and navigate accordingly
-    const hash = window.location.hash.substring(1);
-    if (hash && ['experiences', 'projects'].includes(hash)) {
-      showSection(hash);
-    } else {
-      showSection('home');
-    }
+  applyColorMode();
+  handleResponsiveLayout();
+
+  updateGreetingBasedOnTimezone();
+  setInterval(updateGreetingBasedOnTimezone, 60000);
+  
+  setupTouchGestures();
 });
 
-function updateGreeting() {
+function updateGreetingBasedOnTimezone() {
   const now = new Date();
   const hour = now.getHours();
   let greeting = "";
@@ -112,7 +103,6 @@ function updateGreeting() {
   }
 }
 
-// Function specifically for loading social icons
 function generateSocialIcons() {
   let iconsHTML = '';
   
@@ -127,37 +117,49 @@ function generateSocialIcons() {
   return iconsHTML;
 }
 
-// Load dynamic content from JSON data
 function loadDynamicContent() {
   console.log("Loading dynamic content");
   
   // Home section content
   const heroContent = document.querySelector('.hero-content');
   if (heroContent) {
-    console.log("Found hero content element");
-    
     // Generate social icons HTML
     const socialIconsHTML = generateSocialIcons();
-    console.log("Generated social icons HTML:", socialIconsHTML);
     
-    heroContent.innerHTML = `
-      <p class="hero-text">hi i am <b>${portfolioData.personal.name.toLowerCase()}</b>! ${portfolioData.personal.tagline}</p>
-      <p class="hero-text"></p>
-      <p class="hero-text">
-        ${portfolioData.personal.currentRole}
-        <a href="${portfolioData.personal.company.url}" target="_blank">${portfolioData.personal.company.name}</a>
-      </p>
-      <div class="hero-icons">
-        ${socialIconsHTML}
-      </div>
-      <div class="section-links">
-        <a href="#experiences" class="section-link" data-section="experiences">experiences</a>
-        <a href="#projects" class="section-link" data-section="projects">projects</a>
-        <a href="${portfolioData.personal.resumeUrl}" target="_blank" class="section-link resume-link">resume</a>
-      </div>
-    `;
-  } else {
-    console.error("Hero content element not found");
+    // Check if we're in mobile view
+    const isMobile = window.innerWidth <= 480;
+    
+    if (isMobile) {
+      heroContent.innerHTML = `
+        <h1 class="hero-text">hi i am <b>${portfolioData.personal.name.toLowerCase()}</b>!</h1>
+        <p class="mobile-intro-text">${portfolioData.personal.currentRole} <a href="${portfolioData.personal.company.url}" target="_blank">${portfolioData.personal.company.name}</a></p>
+        <div class="hero-icons">
+          ${socialIconsHTML}
+        </div>
+        <div class="section-links">
+          <a href="/experiences" class="section-link">experiences</a>
+          <a href="/projects" class="section-link">projects</a>
+          <a href="${portfolioData.personal.resumeUrl}" target="_blank" class="section-link resume-link">resume</a>
+        </div>
+      `;
+    } else {
+      heroContent.innerHTML = `
+        <p class="hero-text">hi i am <b>${portfolioData.personal.name.toLowerCase()}</b>! ${portfolioData.personal.tagline}</p>
+        <p class="hero-text"></p>
+        <p class="hero-text">
+          ${portfolioData.personal.currentRole}
+          <a href="${portfolioData.personal.company.url}" target="_blank">${portfolioData.personal.company.name}</a>
+        </p>
+        <div class="hero-icons">
+          ${socialIconsHTML}
+        </div>
+        <div class="section-links">
+          <a href="/experiences" class="section-link">experiences</a>
+          <a href="/projects" class="section-link">projects</a>
+          <a href="${portfolioData.personal.resumeUrl}" target="_blank" class="section-link resume-link">resume</a>
+        </div>
+      `;
+    }
   }
   
   // Experience section content
@@ -201,68 +203,23 @@ function loadDynamicContent() {
     `;
   }
   
-  // Log the state of the social icons after content is loaded
-  const heroIcons = document.querySelector('.hero-icons');
-  if (heroIcons) {
-    console.log("Hero icons container:", heroIcons);
-    console.log("Hero icons content:", heroIcons.innerHTML);
-  }
+  // Reinitialize event handlers after content is loaded
+  initLinkHandlers();
+  handleResponsiveLayout();
 }
 
-// Setup navigation
 function setupNavigation() {
-  const sectionLinks = document.querySelectorAll('.section-link');
   const backArrows = document.querySelectorAll('.back-arrow');
-  
-  // Add event listeners to section links
-  sectionLinks.forEach(link => {
-    const sectionId = link.getAttribute('data-section');
-    if (sectionId) {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSection(sectionId);
-        history.pushState(null, null, `#${sectionId}`);
-      });
-    }
-  });
-  
-  // Add event listeners to back arrows
+
   backArrows.forEach(arrow => {
     arrow.addEventListener('click', (e) => {
       e.preventDefault();
-      const sectionId = arrow.getAttribute('data-section');
-      showSection(sectionId);
-      history.pushState(null, null, '#');
+      window.history.pushState(null, null, '/');
+      router();
     });
   });
   
-  // Handle hash changes
-  window.addEventListener('hashchange', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      showSection(hash);
-    } else {
-      showSection('home');
-    }
-  });
-  
-  // Add touch gestures for mobile
   setupTouchGestures();
-  
-  // Handle window resize - replace the existing resize handler
-  window.addEventListener('resize', () => {
-    handleResponsiveLayout();
-    maintainSectionVisibility();
-    
-    // Debounce resize to prevent flickering
-    if (window.resizeTimer) {
-      clearTimeout(window.resizeTimer);
-    }
-    window.resizeTimer = setTimeout(() => {
-      maintainSectionVisibility();
-      positionFooter();
-    }, 100);
-  });
 }
 
 // Function to show a specific section with smooth transitions
@@ -374,34 +331,34 @@ function setupTouchGestures() {
   });
   
   function handleSwipe() {
-    const threshold = 80; // Reduced threshold for better responsiveness
-    const activeSection = document.querySelector('.content-section.active');
+    const threshold = 80;
+    const path = window.location.pathname;
     
     // Left swipe (negative value)
     if (touchStartX - touchEndX > threshold) {
       // If we're on home, go to experiences
-      if (activeSection.id === 'home') {
-        showSection('experiences');
-        history.pushState(null, null, '#experiences');
+      if (path === '/') {
+        window.history.pushState(null, null, '/experiences');
+        router();
       }
       // If we're on experiences, go to projects
-      else if (activeSection.id === 'experiences') {
-        showSection('projects');
-        history.pushState(null, null, '#projects');
+      else if (path === '/experiences') {
+        window.history.pushState(null, null, '/projects');
+        router();
       }
     }
     
     // Right swipe (positive value)
     if (touchEndX - touchStartX > threshold) {
       // If we're on projects, go to experiences
-      if (activeSection.id === 'projects') {
-        showSection('experiences');
-        history.pushState(null, null, '#experiences');
+      if (path === '/projects') {
+        window.history.pushState(null, null, '/experiences');
+        router();
       }
       // If we're on experiences, go to home
-      else if (activeSection.id === 'experiences') {
-        showSection('home');
-        history.pushState(null, null, '#');
+      else if (path === '/experiences') {
+        window.history.pushState(null, null, '/');
+        router();
       }
     }
   }
@@ -463,12 +420,6 @@ function adjustForMobile() {
     }
   });
   
-  const timeEl = document.querySelector('.greetings-display');
-  if (timeEl) {
-    timeEl.style.right = '50%';
-    timeEl.style.transform = 'translateX(50%)';
-  }
-  
   const heroIcons = document.querySelector('.hero-icons');
   if (heroIcons) {
     heroIcons.style.justifyContent = 'center';
@@ -529,12 +480,6 @@ function adjustForDesktop() {
       dateEl.style.textAlign = 'right';
     }
   });
-  
-  const timeEl = document.querySelector('.greetings-display');
-  if (timeEl) {
-    timeEl.style.right = '1rem';
-    timeEl.style.transform = '';
-  }
   
   document.querySelectorAll('.back-arrow').forEach(arrow => {
     arrow.style.width = '36px';

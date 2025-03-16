@@ -1,4 +1,4 @@
-# Simple Portfolio Website  
+# Portfolio 
 
 A lightweight and minimalistic portfolio website designed for performance and simplicity. Inspired by [Andy Young](https://github.com/ayoung19).  
 
