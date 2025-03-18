@@ -391,6 +391,7 @@ i {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 1.5rem;
   opacity: 1;
   transform: none;
@@ -405,12 +406,34 @@ i {
 .project-title {
   font-size: 1rem;
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .project-description {
   line-height: 1.5;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   font-size: 0.85rem;
+}
+
+.projects-container .technology-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.projects-container .tech-tag {
+  background-color: var(--tag-background);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.projects-container .tech-tag:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .pagination-controls {
