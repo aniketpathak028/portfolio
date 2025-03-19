@@ -456,8 +456,8 @@ function updateHeroContent() {
       const socialIconsHTML = generateSocialIcons();
       
       heroContent.innerHTML = `
-        <h1 class="hero-text">hi i am <b>aniket pathak</b>!</h1>
-        <p class="mobile-intro-text">currently automating solutions at <a href="${portfolioData.personal.company.url}" target="_blank">${portfolioData.personal.company.name}</a></p>
+        <h1 class="hero-text">hi I am <b>aniket pathak</b>!</h1>
+        <p class="mobile-intro-text">currently working at <a href="${portfolioData.personal.company.url}" target="_blank">${portfolioData.personal.company.name}</a></p>
         <div class="hero-icons">
           ${socialIconsHTML}
         </div>

@@ -31,7 +31,8 @@ const routes = {
             </div>
           </div>
         </section>
-      `
+      `,
+      title: 'Experience'
     },
     '/projects': { 
       template: `
@@ -48,7 +49,8 @@ const routes = {
             </div>
           </div>
         </section>
-      `
+      `,
+      title: 'Projects'
     }
   };
   function router() {
@@ -64,6 +66,14 @@ const routes = {
     document.getElementById('page-content').innerHTML = route.template;
     
     document.title = route.title;
+    
+    const favicon = document.querySelector("link[rel='shortcut icon']");
+    if (!favicon) {
+      const newFavicon = document.createElement('link');
+      newFavicon.rel = 'shortcut icon';
+      newFavicon.href = 'img/me.png';
+      document.head.appendChild(newFavicon);
+    }
     
     const footer = document.querySelector('.footer');
     footer.style.display = path === '/' ? 'block' : 'none';

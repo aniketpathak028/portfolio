@@ -1,8 +1,8 @@
 const portfolioData = {
     "personal": {
-      "name": "Aniket Pathak",
-      "tagline": "another avg cs grad dabbling with tech.",
-      "currentRole": "currently automating solutions at",
+      "name": "aniket pathak",
+      "tagline": "your average cs grad dabbling with tech.",
+      "currentRole": "currently working at",
       "company": {
         "name": "nokia",
         "url": "https://www.nokia.com/"
@@ -35,13 +35,13 @@ const portfolioData = {
       {
         "role": "Network Automation Engineer @ Nokia",
         "date": "July 2024 - Present",
-        "description": "Building and improvising Network Automation solutions for clients using the Network Service Platform.",
+        "description": "Developing network automation solutions for clients like TCL, Vodafone etc.",
         "technologies": ["JavaScript", "Python", "YANG"]
       },
       {
         "role": "Intern @ Nokia",
         "date": "Aug 2023 - May 2024",
-        "description": "Worked on 2G -> 3G feature migration of a full stack Java application called TSPortal.",
+        "description": "Worked on 2G -> 3G feature migration for a Java full stack application called TSPortal.",
         "technologies": ["Spring Boot", "Java", "SQL", "JavaScript"]
       }
     ],
