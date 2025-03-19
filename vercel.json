@@ -1,5 +1,5 @@
 {
-  "buildCommand": "echo 'No build step needed'",
+  "buildCommand": "node build.js",
   "outputDirectory": ".",
   "rewrites": [
     {
