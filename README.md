@@ -1,7 +1,6 @@
 # Portfolio 
 
-A lightweight and minimalistic portfolio website designed for performance and simplicity. Inspired by [Andy Young](https://github.com/ayoung19).  
+a lightweight and minimalistic portfolio designed for performance and simplicity. 
+Inspired by [Andy Young](https://github.com/ayoung19).  
 
-More features coming soon—stay tuned! 🚀  
-
-Feel free to use and customize it as needed. If you do, a small credit note would be appreciated! 😊  
+feel free to use and customize it as needed but a small credit note would be appreciated! 😄
