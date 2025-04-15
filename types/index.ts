@@ -5,3 +5,10 @@ export interface Experience {
     description: string;
     skills: string[];
 }
+
+export interface Project {
+    title: string;
+    description: string;
+    link: string;
+    technologies: string[];
+}

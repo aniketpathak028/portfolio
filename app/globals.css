@@ -1,8 +1,13 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --foreground-rgb: white;
   --background-rgb: #121212;
-  --link-color: #3b82f6;
+  --link-color: #7f8ced;
+  --link-hover-color: #5867e8;
 }
 
 body {
@@ -10,10 +15,15 @@ body {
   background: var(--background-rgb);
 }
 
-a {
+a:not([class*='bg-[rgba(127,140,237,0.2)]']) {
   color: var(--link-color);
+  transition: color 0.2s ease-in-out;
+}
+
+a:not([class*='bg-[rgba(127,140,237,0.2)]']):hover {
+  color: var(--link-hover-color);
 }
 
 @theme {
-  --breakpoint-custom: 1044px;
+  --breakpoint-custom: 1150px;
 }

@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import Navbar from "@/components/Navbar"
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} min-h-screen m-0 p-0`}>
+      <body className= {`${poppins.className} flex justify-center min-h-screen mx-[3%] sm:mx-[5%] md:mx-[10%] lg:mx-[15%]`}>
           {children}
       </body>
     </html>
