@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import me from '@/public/me.png';
-import Socials from '@/components/Socials';
-import Links from '@/components/Links';
-import Tagline from '@/components/Tagline';
+import Image from "next/image";
+import me from "@/public/me.png";
+import Socials from "@/components/Socials";
+import Links from "@/components/Links";
+import Tagline from "@/components/Tagline";
 
 export default function Home() {
   return (
@@ -20,6 +20,6 @@ export default function Home() {
           priority
         />
       </div>
-  </div>
+    </div>
   );
 }

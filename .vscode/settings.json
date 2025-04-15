@@ -10,5 +10,6 @@
     ],
     "files.associations": {
         "/*_v*/views/*": "json"
-    }
+    },
+    "editor.formatOnSave": true
 }

@@ -15,12 +15,12 @@ body {
   background: var(--background-rgb);
 }
 
-a:not([class*='bg-[rgba(127,140,237,0.2)]']) {
+a:not([class*="bg-[rgba(127,140,237,0.2)]"]) {
   color: var(--link-color);
   transition: color 0.2s ease-in-out;
 }
 
-a:not([class*='bg-[rgba(127,140,237,0.2)]']):hover {
+a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
   color: var(--link-hover-color);
 }
 
