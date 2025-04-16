@@ -16,7 +16,7 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="absolute top-20 sm:absolute sm:top-30 flex justify-center gap-4 mb-10 md:justify-start">
+    <div className="absolute top-10 sm:top-20 md:top-30 flex justify-center gap-4 mb-10 md:justify-start">
       {links.map(({ href, label }) => (
         <Link
           key={href}
