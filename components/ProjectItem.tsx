@@ -25,7 +25,7 @@ export default function ProjectItem({
         {item.technologies.map((tech, techIndex) => (
           <span
             key={techIndex}
-            className="bg-gray-800 text-[0.75rem] text-white px-2 py-1 rounded"
+            className="bg-gray-800 text-[0.75rem] font-medium text-white px-2 py-1 rounded"
           >
             {tech}
           </span>

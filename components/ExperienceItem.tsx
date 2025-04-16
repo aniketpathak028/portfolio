@@ -19,7 +19,7 @@ export default function ExperienceItem({
         {item.skills.map((skill, skillIndex) => (
           <span
             key={skillIndex}
-            className="bg-gray-800 text-[0.75rem] text-white px-2 py-1 rounded"
+            className="bg-gray-800 text-[0.75rem] font-medium text-white px-2 py-1 rounded"
           >
             {skill}
           </span>

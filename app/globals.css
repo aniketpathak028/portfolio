@@ -10,9 +10,19 @@
   --link-hover-color: #5867e8;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: var(--foreground-rgb);
   background: var(--background-rgb);
+  position: relative;
+  min-height: 100vh;
 }
 
 a:not([class*="bg-[rgba(127,140,237,0.2)]"]) {

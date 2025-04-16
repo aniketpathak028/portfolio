@@ -4,7 +4,7 @@ export default function Socials() {
 
   return (
     <div className="flex justify-center sm:justify-start gap-4 mt-6">
-      <a href="https://linkedin.com/in/aniketpathak028" className={linkStyles}>
+      <a href="https://www.linkedin.com/in/aniket-pathak-8925311b5/" className={linkStyles}>
         <svg
           className="w-5 h-5"
           fill="currentColor"
@@ -28,7 +28,7 @@ export default function Socials() {
           />
         </svg>
       </a>
-      <a href="https://instagram.com/anik3tpathak" className={linkStyles}>
+      <a href="https://www.instagram.com/anik3tpathak/" className={linkStyles}>
         <svg
           className="w-5 h-5"
           fill="currentColor"
