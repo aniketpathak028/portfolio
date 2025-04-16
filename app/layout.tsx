@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} flex justify-center min-h-screen mx-[3%] sm:mx-[5%] md:mx-[10%] lg:mx-[15%] overflow-x-hidden`}>
+      <body className={`${poppins.className} flex justify-center min-h-screen mx-[3%] sm:mx-[5%] md:mx-[10%] lg:mx-[15%] scrollbar-hide`}>
         {children}
       </body>
     </html>
