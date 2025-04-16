@@ -22,7 +22,7 @@ export const projectItems: Array<Project> = [
    {
       title: 'Envoy',
       description: 'email management solution to send, schedule, and track emails with notifications',
-      link: 'https://github.com/aniket/enovy',
+      link: 'https://github.com/aniket/envoy',
       technologies: ['Java', 'Spring Boot', 'SQL']
    },
    {
