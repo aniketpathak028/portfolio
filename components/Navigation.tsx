@@ -12,24 +12,31 @@ export default function Navigation() {
   const links = [
     { href: "/experience", label: "experience" },
     { href: "/projects", label: "projects" },
-    { href: "/", label: "about" },
+    { href: "/articles", label: "articles" },
+    { href: "/", label: "home" },
   ];
 
   return (
-    <div className="absolute top-10 sm:top-20 md:top-30 flex justify-center gap-4 mb-10 md:justify-start">
-      {links.map(({ href, label }) => (
-        <Link
-          key={href}
-          href={href}
-          className={`${linkStyles} ${
-            href === pathname
-              ? "!text-[var(--link-color)] hover:text-[var(--link-hover-color)] -translate-y-0.5 after:scale-x-100"
-              : "!text-white hover:text-[var(--link-color)] hover:after:scale-x-100 hover:after:origin-bottom-left"
-          }`}
-        >
-          {label}
-        </Link>
-      ))}
+    <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-800/10">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex justify-center py-4">
+          <div className="flex gap-6">
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`${linkStyles} ${
+                  href === pathname
+                    ? "!text-[var(--link-color)] hover:text-[var(--link-hover-color)] -translate-y-0.5 after:scale-x-100"
+                    : "!text-gray-300 hover:text-[var(--link-color)] hover:after:scale-x-100 hover:after:origin-bottom-left"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

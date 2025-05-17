@@ -1,6 +1,6 @@
 export default function Socials() {
   const linkStyles =
-    "text-white p-2 rounded-full bg-[rgba(127,140,237,0.2)] hover:bg-[#7f8ced] hover:-translate-y-[3px] transition-all duration-300 ease-in-out";
+    "text-gray-200 p-2 rounded-full bg-[rgba(127,140,237,0.2)] hover:bg-[#7f8ced] hover:-translate-y-[3px] transition-all duration-300 ease-in-out";
 
   return (
     <div className="flex justify-center sm:justify-start gap-4 mt-6">

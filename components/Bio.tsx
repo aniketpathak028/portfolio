@@ -6,15 +6,9 @@ export default function Links() {
 
   return (
     <div className="flex justify-center sm:justify-start gap-4 mt-6">
-      <Link href="/experience" className={linkStyles}>
-        experience
-      </Link>
-      <Link href="/projects" className={linkStyles}>
-        projects
-      </Link>
-      <Link href="/resume" className={linkStyles}>
-        resume
-      </Link>
+      <p>
+          i like discussing philosophy too.
+      </p>
     </div>
   );
 }

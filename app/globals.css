@@ -10,8 +10,13 @@
   --link-hover-color: #5867e8;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground-rgb);
+  overflow-x: hidden;
   background: var(--background-rgb);
 }
 

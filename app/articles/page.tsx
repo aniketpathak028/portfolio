@@ -1,9 +1,29 @@
+import { articles } from "@/data/";
 import Navigation from "@/components/Navigation";
+import ArticleItem from "@/components/ArticleItem";
 
 export default function Articles() {
+  if (!articles || articles.length === 0) {
+    return (
+      <div className="flex flex-col">
+        <Navigation />
+        <div className="flex items-center justify-center h-[50vh]">
+          <p className="text-gray-400 text-sm sm:text-base">No articles present</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col justify-center px-4 sm:px-0">
+    <div className="flex flex-col">
       <Navigation />
+      <div className="flex flex-col gap-8 pb-12">
+        <div className="grid gap-8">
+          {articles.map((article, index) => (
+            <ArticleItem key={index} index={index} item={article} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

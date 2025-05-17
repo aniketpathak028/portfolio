@@ -12,3 +12,13 @@ export interface Project {
     link: string;
     technologies: string[];
 }
+
+export interface Article {
+  title: string;
+  excerpt: string;
+  date: string;
+  url: string;
+  platform: 'medium' | 'dev.to' | 'other';
+  tags?: string[];
+  readTime?: string;
+}

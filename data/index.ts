@@ -1,11 +1,11 @@
-import { Experience, Project } from "@/types";
+import { Experience, Project, Article } from "@/types";
 
 export const experienceItems: Array<Experience> = [
     {
       title: 'Network Automation Engineer',
       company: 'Nokia',
-      period: 'July 2024 - Present',
-      description: 'developing network automation solutions for clients like TCL, Vodafone etc.',
+      period: 'July 2024 - May 2025',
+      description: 'designing network automation solutions for clients like TCL, Vodafone etc.',
       skills: ['JavaScript', 'Computer Networking']
     },
     {
@@ -14,27 +14,39 @@ export const experienceItems: Array<Experience> = [
       period: 'Aug 2023 - May 2024',
       description: 'worked on 2G -> 3G feature migration for a Java full stack application called TSPortal.',
       skills: ['Spring Boot', 'SQL', 'JavaScript']
-    },
+    }
   ];
 
 
 export const projectItems: Array<Project> = [
    {
-      title: 'Envoy',
-      description: 'email management solution to send, schedule, and track emails with notifications',
-      link: 'https://github.com/aniketpathak028/envoy',
-      technologies: ['Java', 'Spring Boot', 'SQL']
+      title: 'go-proxy',
+      description: 'proxy server to cache browser requests and analyze network traffic',
+      link: 'https://github.com/aniketpathak028/go-proxy',
+      technologies: ['Go', 'REST']
    },
    {
-      title: 'Echo',
-      description: 'http server using C++ (in progress..)',
-      link: 'https://github.com/aniketpathak028/echo',
-      technologies: ['C++', 'CMake', 'Websockets']
+      title: 'goFillMyApplication',
+      description: 'automation tool to fill online job applications using cli command',
+      link: 'https://github.com/aniketpathak028/goFillMyApplication',
+      technologies: ['Go', 'Web-Automation', 'TUI']
    },
    {
-      title: 'Flexboard',
+      title: 'flexboard',
       description: 'react component library to create flexible sidebars',
       link: 'https://github.com/dorbus/flexboard',
       technologies: ['React.js', 'Typescript']
    }
+];
+
+export const articles: Array<Article> = [
+  // {
+  //   title: "Building Network Automation Tools with JavaScript",
+  //   excerpt: "How I automated network configurations for telecom clients using modern JavaScript.",
+  //   date: "May 15, 2025",
+  //   url: "https://medium.com/@aniketpathak028/kwoc21-project-report-828364e8db0e",
+  //   platform: "medium",
+  //   tags: ["JavaScript", "Networking", "Automation"],
+  //   readTime: "8 min read"
+  // }
 ];

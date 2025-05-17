@@ -4,9 +4,9 @@ import Navigation from "@/components/Navigation";
 
 export default function Projects() {
   return (
-    <div className="flex flex-col justify-center px-4 sm:px-0">
+    <div className="flex flex-col">
       <Navigation />
-      <div className="flex flex-col gap-8 py-[5%]">
+      <div className="flex flex-col gap-8 pb-12">
         {projectItems.map((item, index) => (
           <ProjectItem key={index} index={index} item={item} />
         ))}
