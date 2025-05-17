@@ -14,14 +14,6 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export const metadata: Metadata = {
-  title: "Aniket Pathak",
-  description: "portfolio website",
-  icons: [
-    { url: '/icon.png', type: 'image/png' },
-    { url: '/favicon.ico', type: 'image/x-icon'},
-  ],
-};
 
 export default function RootLayout({
   children,
