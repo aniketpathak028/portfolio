@@ -20,6 +20,7 @@ export default function Tagline() {
           nokia
         </Link>
       </p>
+      
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import me from "@/public/me.png";
 import Socials from "@/components/Socials";
-import Location from "@/components/Location";
+import Resume from "@/components/Resume";
 import Tagline from "@/components/Tagline";
 import Navigation from "@/components/Navigation";
 
@@ -12,7 +12,7 @@ export default function Home() {
       <div className="text-[min(0.95rem,1.3rem)] text-gray-300">
         <Tagline />
         <Socials />
-        <Location />
+        <Resume />
       </div>
       <div className="w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80">
         <Image
