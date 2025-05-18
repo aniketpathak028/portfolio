@@ -17,7 +17,7 @@ export default function Articles() {
   return (
     <div className="flex flex-col">
       <Navigation />
-      <div className="flex flex-col gap-8 pb-12">
+      <div className="flex flex-col gap-8 mt-24 sm:mt-32 pb-12">
         <div className="grid gap-8">
           {articles.map((article, index) => (
             <ArticleItem key={index} index={index} item={article} />

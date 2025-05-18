@@ -6,14 +6,14 @@ export const experienceItems: Array<Experience> = [
       company: 'Nokia',
       period: 'July 2024 - May 2025',
       description: 'designing network automation solutions for clients like TCL, Vodafone etc.',
-      skills: ['JavaScript', 'Computer Networking']
+      skills: ['js', 'ip-networking', 'automation']
     },
     {
       title: 'Intern',
       company: 'Nokia',
       period: 'Aug 2023 - May 2024',
       description: 'worked on 2G -> 3G feature migration for a Java full stack application called TSPortal.',
-      skills: ['Spring Boot', 'SQL', 'JavaScript']
+      skills: ['spring-boot', 'sql', 'js']
     }
   ];
 
@@ -23,19 +23,19 @@ export const projectItems: Array<Project> = [
       title: 'go-proxy',
       description: 'proxy server to cache browser requests and analyze network traffic',
       link: 'https://github.com/aniketpathak028/go-proxy',
-      technologies: ['Go', 'REST']
+      technologies: ['go', 'https', 'tls']
    },
    {
       title: 'goFillMyApplication',
       description: 'automation tool to fill online job applications using cli command',
       link: 'https://github.com/aniketpathak028/goFillMyApplication',
-      technologies: ['Go', 'Web-Automation', 'TUI']
+      technologies: ['go', 'web-automation', 'tui']
    },
    {
       title: 'flexboard',
       description: 'react component library to create flexible sidebars',
       link: 'https://github.com/dorbus/flexboard',
-      technologies: ['React.js', 'Typescript']
+      technologies: ['react.js', 'typescript']
    }
 ];
 
