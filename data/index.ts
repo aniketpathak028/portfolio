@@ -27,7 +27,7 @@ export const projectItems: Array<Project> = [
    },
    {
       title: 'goFillMyApplication',
-      description: 'automation tool to fill online job applications using cli command',
+      description: 'automation tool to fill online job applications using cli',
       link: 'https://github.com/aniketpathak028/goFillMyApplication',
       technologies: ['go', 'web-automation', 'tui']
    },
