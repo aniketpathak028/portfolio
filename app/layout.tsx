@@ -9,11 +9,9 @@ const poppins = Poppins({
 });
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
-
 
 export default function RootLayout({
   children,
@@ -22,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} min-h-screen mx-[3%] sm:mx-[5%] md:mx-[10%] lg:mx-[15%] scrollbar-hide`}>
-        <div className="flex flex-col items-center justify-between min-h-screen">
-          <main className="w-full flex justify-center items-center flex-grow">
+      <body className={poppins.className}>
+        <div className="mx-[3%] sm:mx-[5%] md:mx-[10%] lg:mx-[15%] flex flex-col min-h-[100dvh]">
+          <main className="flex-grow w-full flex justify-center items-center">
             {children}
           </main>
           <Footer />
