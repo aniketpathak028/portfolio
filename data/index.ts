@@ -44,7 +44,7 @@ export const articles: Array<Article> = [
     title: "Podman vs Docker (with installation guide for WSL)",
     excerpt: "A comparison of Podman and Docker, two popular containerization tools, with an installation guide for WSL.",
     date: "May 22, 2025",
-    url: "https://medium.com/@aniketpathak028/kwoc21-project-report-828364e8db0e",
+    url: "https://medium.com/@aniketpathak028/install-and-setup-podman-in-wsl2-4090304f8ce1",
     platform: "medium",
     tags: ["docker", "podman", "wsl", "containers"],
     readTime: "2 min read"
