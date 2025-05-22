@@ -1,8 +1,11 @@
-import { articles } from "@/data/";
+import { getArticles } from "@/lib/notion";
 import Navigation from "@/components/Navigation";
 import ArticleItem from "@/components/ArticleItem";
 
-export default function Articles() {
+export const revalidate = 3600; // Revalidate every hour
+
+export default async function Articles() {
+  const articles = await getArticles();
   if (!articles || articles.length === 0) {
     return (
       <div className="flex flex-col">

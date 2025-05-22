@@ -2,7 +2,6 @@ import { Article } from "@/types/index";
 import { FaDev, FaMedium } from "react-icons/fa";
 
 export default function ArticleItem({
-  index,
   item,
 }: Readonly<{ index: number; item: Article }>) {
   return (

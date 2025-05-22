@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Poppins } from "next/font/google";
 import Footer from "@/components/Footer";
 

@@ -1,13 +1,17 @@
 import ProjectItem from "@/components/ProjectItem";
-import { projectItems } from "@/data/index";
 import Navigation from "@/components/Navigation";
+import { getProjects } from '@/lib/notion';
 
-export default function Projects() {
+export const revalidate = 3600; // Revalidate every hour
+
+export default async function Projects() {
+  const projects = await getProjects();
+
   return (
     <div className="flex flex-col">
       <Navigation />
       <div className="flex flex-col gap-8 mt-24 sm:mt-32 pb-12">
-        {projectItems.map((item, index) => (
+        {projects.map((item, index) => (
           <ProjectItem key={index} index={index} item={item} />
         ))}
       </div>

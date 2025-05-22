@@ -17,7 +17,7 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#121212] border-b border-gray-800/10">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[var(--background-rgb)] border-b border-gray-800/10">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex justify-center py-4">
           <div className="flex gap-6">
