@@ -40,13 +40,13 @@ export const projectItems: Array<Project> = [
 ];
 
 export const articles: Array<Article> = [
-  // {
-  //   title: "Building Network Automation Tools with JavaScript",
-  //   excerpt: "How I automated network configurations for telecom clients using modern JavaScript.",
-  //   date: "May 15, 2025",
-  //   url: "https://medium.com/@aniketpathak028/kwoc21-project-report-828364e8db0e",
-  //   platform: "medium",
-  //   tags: ["JavaScript", "Networking", "Automation"],
-  //   readTime: "8 min read"
-  // }
+  {
+    title: "Podman vs Docker (with installation guide for WSL)",
+    excerpt: "A comparison of Podman and Docker, two popular containerization tools, with an installation guide for WSL.",
+    date: "May 22, 2025",
+    url: "https://medium.com/@aniketpathak028/kwoc21-project-report-828364e8db0e",
+    platform: "medium",
+    tags: ["docker", "podman", "wsl", "containers"],
+    readTime: "2 min read"
+  }
 ];
