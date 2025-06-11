@@ -7,7 +7,9 @@ export default function Links() {
   return (
     <div className="flex justify-center sm:justify-start gap-4 mt-6">
       <Link
-        href="/resume"
+        href="https://aniketpathak028.github.io/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
         className="flex items-center gap-1.5 hover:text-[#7f8ced] transition-colors duration-300"
       >
         <svg 
