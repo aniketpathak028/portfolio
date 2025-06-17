@@ -3,10 +3,9 @@ export default function Footer() {
   
   return (
     <footer className="w-full py-4 mt-auto">
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <p className="text-xs text-gray-500">
-          © {currentYear} Aniket Pathak. All rights reserved.
-        </p>
+      <div className="flex flex-col sm:flex-col md:flex-row justify-center items-center gap-1 max-w-4xl mx-auto px-4 text-center text-xs text-gray-500">
+        <span>© {new Date().getFullYear()} Aniket Pathak. </span>
+        <span>All rights reserved.</span>
       </div>
     </footer>
   );
