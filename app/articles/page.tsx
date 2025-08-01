@@ -1,12 +1,13 @@
-import { getArticles } from "@/lib/notion";
 import Navigation from "@/components/Navigation";
-import ArticleItem from "@/components/ArticleItem";
+import ArticleListItem from "@/components/ArticleListItem";
+import { getCategorizedArticles } from "@/lib/articles"
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function Articles() {
-  const articles = await getArticles();
-  if (!articles || articles.length === 0) {
+  const articles = getCategorizedArticles()
+  
+  if (!articles) {
     return (
       <div className="flex flex-col">
         <Navigation />
@@ -16,16 +17,21 @@ export default async function Articles() {
       </div>
     );
   }
-
+ 
   return (
     <div className="flex flex-col">
       <Navigation />
-      <div className="flex flex-col gap-8 mt-24 sm:mt-32 pb-12">
-        <div className="grid gap-8">
-          {articles.map((article, index) => (
-            <ArticleItem key={index} index={index} item={article} />
-          ))}
-        </div>
+      <div className="mt-24 sm:mt-32 pb-12">
+        <section className="md:grid md:grid-cols-2 flex flex-col gap-10">
+          {articles !== null &&
+            Object.keys(articles).map((article) => (
+              <ArticleListItem
+                category={article}
+                articles={articles[article]}
+                key={article}
+              />
+            ))}
+        </section>
       </div>
     </div>
   );

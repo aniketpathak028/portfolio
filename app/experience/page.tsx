@@ -1,20 +1,17 @@
 import ExperienceItem from "@/components/ExperienceItem";
-import Navigation from "@/components/Navigation";
+import PageLayout from "@/components/PageLayout";
 import { getExperience } from '@/lib/notion';
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function Experience() {
   const experience = await getExperience();
-
+  
   return (
-    <div className="flex flex-col">
-      <Navigation />
-      <div className="flex flex-col gap-8 mt-24 sm:mt-32 pb-12">
-        {experience.map((item, index) => (
-          <ExperienceItem key={index} index={index} item={item} />
-        ))}
-      </div>
-    </div>
+    <PageLayout>
+      {experience.map((item, index) => (
+        <ExperienceItem key={index} index={index} item={item} />
+      ))}
+    </PageLayout>
   );
 }

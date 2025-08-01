@@ -22,3 +22,10 @@ export interface Article {
   tags?: string[];
   readTime?: string;
 }
+
+export type ArticleItem = {
+  id: string
+  title: string
+  date: string
+  category: string
+}
