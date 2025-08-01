@@ -1,8 +1,16 @@
+// app/articles/[slug]/page.tsx
+
 import Link from "next/link"
 import { ArrowLeftIcon } from "@heroicons/react/24/solid"
 import { getArticlesData } from "@/lib/articles"
 
-const Article = async ({ params }: { params: { slug: string } }) => {
+interface ArticlePageProps {
+  params: {
+    slug: string
+  }
+}
+
+const Article = async ({ params }: ArticlePageProps) => {
   const articleData = await getArticlesData(params.slug)
 
   return (
