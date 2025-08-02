@@ -42,7 +42,6 @@ const getSortedArticles = (): ArticleItem[] => {
   })
 }
 
-
 export const getCategorizedArticles = (): Record<string, ArticleItem[]> => {
     const sortedArticles = getSortedArticles()
     const categorizedArticles: Record<string, ArticleItem[]> = {}
@@ -56,7 +55,6 @@ export const getCategorizedArticles = (): Record<string, ArticleItem[]> => {
 
     return categorizedArticles
 }
-
 
 export const getArticlesData = async (id: string) => {
   const fullPath= path.join(articlesDirectory, `${id}.md`)
