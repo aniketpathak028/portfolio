@@ -2,8 +2,6 @@ import Navigation from "@/components/Navigation";
 import ArticleListItem from "@/components/ArticleListItem";
 import { getCategorizedArticles } from "@/lib/articles"
 
-export const revalidate = 3600;
-
 export default async function Articles() {
   const articles = getCategorizedArticles()
   
@@ -22,7 +20,7 @@ export default async function Articles() {
     <div className="flex flex-col">
       <Navigation />
       <div className="mt-24 sm:mt-32 pb-12">
-        <section className="md:grid md:grid-cols-2 flex flex-col gap-10">
+        <section className="flex flex-col gap-10">
           {articles !== null &&
             Object.keys(articles).map((article) => (
               <ArticleListItem

@@ -34,15 +34,16 @@ a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
 }
 
 .article {
-  @apply flex flex-col gap-3 text-sm sm:text-base md:text-lg tracking-wide mb-20; /* Responsive text size */
+  @apply flex flex-col gap-3 text-sm sm:text-base md:text-lg tracking-wide mb-20;
+  max-width: 800px;
 }
 
 .article > h1 {
-  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center tracking-tight; /* Responsive heading size */
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center tracking-tight;
 }
 
 .article > h2 {
-  @apply text-xl sm:text-2xl md:text-3xl tracking-tight; /* Responsive heading size */
+  @apply text-xl sm:text-2xl md:text-3xl tracking-tight;
 }
 
 .article > ol {
@@ -54,7 +55,7 @@ a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
 }
 
 .article > pre {
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll text-sm sm:text-base; /* Responsive code font size */
+  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
 }
 
 .article > blockquote {
@@ -62,5 +63,5 @@ a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
 }
 
 .article > p > img {
-  @apply w-1/2 mx-auto;
+  @apply mx-auto;
 }

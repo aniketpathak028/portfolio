@@ -1,0 +1,35 @@
+---
+title: "Sync vs Async vs Multi-Threading vs Multi-Processing"
+category: "programming"
+date: "13-06-2025"
+---
+
+# Sync vs Async vs Multi-Threading vs Multi-Processing
+
+![Sync vs Async vs Multi-Threading vs Multi-Processing](/sync-async-threading.png)
+
+I struggled a long time to understand what these terms really mean, until I understood how a process and a thread works. In this article I want to explain it in the simplest way possible to understand the exact differences between them.
+
+Before we begin understanding them, I wish to briefly explain what is a thread and a process.
+
+**Process** — A process is just a program in motion, let’s say you wrote some code and compiled it, once you start running the executable, the machine code (the 0s and 1s that is actually understood by the CPU) is loaded into ram from the disk and its execution is started, this is the transition from program → process.
+
+A process is just like a human it can have its own personality depending on its circumstances, it can be very CPU hungry, I/O hungry or it can make a lot of system calls, if it is a database-server or a web-server for instance.
+
+**Thread** — A thread is just a unit of execution, it’s like a guy who does all the work inside the process by executing the instructions. A single process can have multiple threads (also known as multi-threading) but it is interesting to note that all of these threads share the same memory as that of the process so it shares the same resources as that of its colleague thread.
+
+A thread has its own stack and registers to maintain the context of execution. The stack is used by the thread to store its own local variables for the function it is executing, once the function is over these variables are removed from the stack. The registers are really fast and small memory unit which can be used as temporary storage by the thread for storing its results.
+
+A process also had a code section to store the actual code of execution and a few other stuff too.
+
+![Anatomy of a Process](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*X8Zxrn4uCHN6ZW-_aem-ww.png)
+
+Now that we understand the basics of a thread and a process, let us try to understand the differences between synchronous, asynchronous, multi-threading and multi-processing.
+
+1.  **Synchronous** — It is a single threaded approach where only a single instruction is executed at once, which may wait for any I/O, N/W or CPU intensive task before moving on to the next instruction making the process slow. Once a thread starts waiting for an instruction, the process halts. It can however be used for very simple applications something like an automation script that takes the backup of some server resource every once in a while.
+2.  **Multi-Threaded** — When we expect delay in an instruction, we can spin up another thread simultaneously to carry out the other workload of the process in parallel without causing a halt in the application. Since this thread is spun up in the same process, it shares all the resources of the process and this can be dangerous causing race conditions (2 threads fighting for the same resource), and deadlocks (a situation where a thread holds back a resource forever, keeping other threads waiting). It is mostly used in low level applications which directly communicate to kernel like games, browsers, IDEs etc (its very important to understand the functioning of kernel and the operating system to write a multi-threaded application)
+3.  **Asynchronous** — Newer approach where a single thread executes the instructions, but in-case of a asynchronous call it just passes a callback and proceeds ahead with other instructions. Once the event-loop is notified of this invoked callback, it resumes the execution for the left out instructions in the callback. better approach as it simplifies having to deal with thread concurrency problems and a single thread makes the code simpler to read and write, most of the heavy lifting is abstracted. Python’s asyncio and Node’s async await are examples of asynchronous implementations. It is great for building web servers, desktop and mobile apps.
+
+![Sync vs Async](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*un2xM0mg0j75T4mLoVyAPQ.png)
+
+4. **Multi-Processing** — Finally, this bad boy uses multiple processes to execute an instruction. Although difficult to write, it is the fastest if you have a CPU intensive task, but there must be inter-process communication between them to have a context of the execution status. An example where it can be used is for generating a password from a md5 hash by using a collection of suspected passwords. Multiprocessing can help here to distribute the list contents and assign them to different processes simultaneously.

@@ -65,6 +65,8 @@ export const getArticlesData = async (id: string) => {
 
   const contentHtml = processedContent.toString()
 
+  console.log("date", moment(matterResult.data.date, "DD-MM-YYYY").format("MMMM Do YYYY"))
+
   return{
     id,
     contentHtml,
