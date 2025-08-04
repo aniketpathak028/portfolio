@@ -3,7 +3,9 @@ import matter from "gray-matter"
 import path from "path"
 import moment from "moment"
 import { remark } from "remark"
-import html from "remark-html"
+import remarkRehype from "remark-rehype"; // To convert Markdown AST to HTML AST
+import rehypePrismPlus from "rehype-prism-plus"; // For syntax highlighting
+import rehypeStringify from "rehype-stringify"; // For outputting HTML
 
 import type { ArticleItem } from "@/types"
 
@@ -61,7 +63,11 @@ export const getArticlesData = async (id: string) => {
 
   const fileContents = fs.readFileSync(fullPath, "utf-8")
   const matterResult= matter(fileContents)
-  const processedContent = await remark().use(html).process(matterResult.content)
+  const processedContent = await remark()
+  .use(remarkRehype)
+  .use(rehypePrismPlus, {})
+  .use(rehypeStringify)
+  .process(matterResult.content)
 
   const contentHtml = processedContent.toString()
 

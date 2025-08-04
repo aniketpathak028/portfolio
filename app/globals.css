@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "prismjs/themes/prism-tomorrow.css";
+
 :root {
   --foreground-rgb: white;
   --background-rgb: #121212;
@@ -55,7 +57,9 @@ a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
 }
 
 .article > pre {
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll rounded-lg;
+  width: 100%;
+  max-width: 80vw
 }
 
 .article > blockquote {
