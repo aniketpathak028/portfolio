@@ -1,0 +1,131 @@
+---
+title: "Learning tmux for that ultimate workflow"
+category: "workflow"
+date: "03-08-2025"
+---
+
+# Learning tmux for that ultimate workflow
+
+![Tmux](/tmux.png)
+
+After years of using emulators like powershell and iterm, which spoils us with the ability to create windows and panes using the GUI, I had never learnt to appreciate what a cli tool like a terminal multiplexer could do!
+
+It was this weekend when I dabbled across this tool called tmux and attempted to learn it while creating my own workflow, and trust me boy when I say it was worth it, I mean it.
+
+In this blog I attempt to share my learnings about tmux and how to use it in the simplest way possible!
+
+So, starting right out, why do we need a terminal multiplexer? Imagine a hectic day at work, a k8s cluster is having an issue nobody can diagnose and you need to debug every node in the cluster… you need to ssh into every node and run a bunch of diagnostic commands simultaneously, while viewing the logs of all the nodes at the same time! sounds like quite a task huh!
+
+The manual way — use an emulator of your choice and split it into windows or panes and arrange it in your desktop.. good choice! but what if it was a remote server you had to do it? with no GUI it would be a pain in the ass!
+
+Enter tmux, which is a cli tool, that lets you create sessions, windows and panes, all using simple commands! Let’s learn them.
+
+1.  Install tmux
+
+```
+sudo apt-get install tmux
+brew install tmux
+```
+
+Configuring tmux
+
+tmux needs very little config, however I would suggest to not change the default commands for tmux! but ofcourse some things can be customized, for example my tmux config is as below (can be found in ~/.tmux.conf)
+
+```
+set-option -g history-limit 25000
+set -g mouse on
+# for neovim
+set -sg escape-time 10
+# vi for copy mode
+setw -g mode-keys vi
+# status bar
+set -g status-right "#(pomo)"
+set -g status-style "fg=#665c54"
+set -g status-left-style "fg=#928374"
+set -g status-bg default
+set -g status-position top
+set -g status-interval 1
+set -g status-left ""
+# count the panes from 1
+set -g base-index 1
+setw -g pane-base-index 1
+# reload configuration
+bind-key -r r source-file ~/.tmux.conf
+# term colors, these are the correct ones according to neovim checkhealth
+set-option -g default-terminal "screen-256color"
+
+```
+
+Concept of Window, Session and Panes
+
+*   A **session** is the top-level container that persists even when you’re not actively viewing it.
+*   A **window** is a “tab” within a session, providing a distinct workspace.
+*   A **pane** is a subdivision of a window, where you run your actual commands.
+
+Concept of prefix
+
+The tmux server listens to a specific prefix command before listening to any tmux command, as it needs to distinguish them from the usual cli commands.
+
+The way tmux works is:
+
+```
+ctrl + b <tmux-command> # prefix command followed by any tmux command
+```
+
+2. sessions
+
+```
+# if no sessions exist in the beginning, create using tmux command
+tmux 
+# to create a new session use
+tmux new-session -s <session-name>
+# detach from a session
+ctrl + b + d # prefix + detach
+# attach to a session
+tmux attach-session -t <session_name/session_number>
+# or the way I do this is use the navigation command
+ctrl + b + w 
+# this opens a navigation pane where all the sessions and 
+# their windows and panes are listed, use the arrow key to simply navigate
+# and press enter to enter the session, window or pane!
+# list all session
+tmux ls
+# kill a session
+tmux kill-session -t <session_name/session_number>
+```
+
+3. windows
+
+A window is created inside a session, and even if you detach a session, its windows and panes will be preserved in the tmux server, so you can attach to an old session anytime and expect to start working from where you left!
+
+```
+# create a window
+ctrl + b + c
+# go to a specific window
+ctrl + b + <window-number>
+# rename the current window
+ctrl + b + ,
+# close the current window
+ctrl + b + &
+```
+
+4. panes
+
+```
+# split a pane vertically
+ctrl + b + %
+# split a pane horizontally
+ctrl + b + opening quotes
+# navigate between panes
+ctrl + b + (left arrow, right arrow, up arrow, and down arrow)
+# resizing panes
+ctrl + b + ctrl + arrow key (in the direction to resize the pane)
+# close the current pane
+exit
+ctrl + b + x
+# zoom into a specific pane
+ctrl + b + z
+
+```
+
+That’s all the fundamentals of tmux, I am sure there are a lot more stuff, I will keep adding to this blog as I learn more!
