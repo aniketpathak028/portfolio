@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { Experience, Project, Article } from '@/types';
+import { Experience, Project } from '@/types';
 
 const notion = new Client({
   auth: process.env.NOTION_API_KEY

@@ -2,6 +2,11 @@ import Navigation from "@/components/Navigation";
 import ArticleItem from "@/components/ArticleItem";
 import { getAllArticles } from "@/lib/articles"
 
+export const metadata = {
+  title: 'Aniket Pathak - Articles',
+  description: 'portfolio wesbite'
+}
+
 export default async function Articles() {  
   const articles = getAllArticles()
     .slice(0, 9)

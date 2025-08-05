@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
  
   return {
-    title: `Tag: ${slug}`,
+    title: `Aniket Pathak - Tag: ${slug}`,
     description: `Articles tagged with ${slug}`,
   };
 }

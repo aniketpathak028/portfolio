@@ -4,6 +4,11 @@ import { getExperience } from '@/lib/notion';
 
 export const revalidate = 3600;
 
+export const metadata = {
+  title: 'Aniket Pathak - Experience',
+  description: 'portfolio wesbite'
+}
+
 export default async function Experience() {
   const experience = await getExperience();
   
