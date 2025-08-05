@@ -1,7 +1,10 @@
 ---
-title: "Learning tmux for that ultimate workflow"
-category: "workflow"
-date: "03-08-2025"
+title: Learning tmux for that ultimate workflow
+tags:
+- cli-tool
+- workflow
+date: 03-08-2025
+excerpt: A highly underated cli tool that can 10x your productivity.
 ---
 
 # Learning tmux for that ultimate workflow
@@ -20,18 +23,18 @@ The manual way — use an emulator of your choice and split it into windows or p
 
 Enter tmux, which is a cli tool, that lets you create sessions, windows and panes, all using simple commands! Let’s learn them.
 
-1.  Install tmux
+## Install tmux
 
-```
+```bash
 sudo apt-get install tmux
 brew install tmux
 ```
 
-Configuring tmux
+## Configuring tmux
 
 tmux needs very little config, however I would suggest to not change the default commands for tmux! but ofcourse some things can be customized, for example my tmux config is as below (can be found in ~/.tmux.conf)
 
-```
+```bash
 set-option -g history-limit 25000
 set -g mouse on
 # for neovim
@@ -56,25 +59,25 @@ set-option -g default-terminal "screen-256color"
 
 ```
 
-Concept of Window, Session and Panes
+## Concept of Window, Session and Panes
 
 *   A **session** is the top-level container that persists even when you’re not actively viewing it.
 *   A **window** is a “tab” within a session, providing a distinct workspace.
 *   A **pane** is a subdivision of a window, where you run your actual commands.
 
-Concept of prefix
+## Concept of prefix
 
 The tmux server listens to a specific prefix command before listening to any tmux command, as it needs to distinguish them from the usual cli commands.
 
 The way tmux works is:
 
-```
+```bash
 ctrl + b <tmux-command> # prefix command followed by any tmux command
 ```
 
-2. sessions
+## sessions
 
-```
+```bash
 # if no sessions exist in the beginning, create using tmux command
 tmux 
 # to create a new session use
@@ -94,11 +97,11 @@ tmux ls
 tmux kill-session -t <session_name/session_number>
 ```
 
-3. windows
+## windows
 
 A window is created inside a session, and even if you detach a session, its windows and panes will be preserved in the tmux server, so you can attach to an old session anytime and expect to start working from where you left!
 
-```
+```bash
 # create a window
 ctrl + b + c
 # go to a specific window
@@ -109,9 +112,9 @@ ctrl + b + ,
 ctrl + b + &
 ```
 
-4. panes
+## panes
 
-```
+```bash
 # split a pane vertically
 ctrl + b + %
 # split a pane horizontally

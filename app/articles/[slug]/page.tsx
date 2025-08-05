@@ -1,18 +1,44 @@
+import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { getArticlesData } from "@/lib/articles";
+import { getArticlesFromSlug, getSlugs } from "@/lib/articles";
+import "highlight.js/styles/atom-one-dark.css";
 
-interface ArticlePageProps {
+interface Props {
   params: {
     slug: string;
   };
 }
 
-const Article = async (props: {
-  params: Promise<ArticlePageProps["params"]>;
-}) => {
+export async function generateMetadata(props: {
+  params: Promise<Props["params"]>;
+}) {
   const params = await props.params;
-  const articleData = await getArticlesData(params.slug);
+  const { meta } = getArticlesFromSlug(params.slug);
+  
+  return {
+    title: meta.title,
+    description: meta.excerpt || meta.title,
+  };
+}
+
+export async function generateStaticParams() {
+  const slugs = getSlugs();
+  
+  return slugs.map((slug) => ({
+    slug: slug,
+  }));
+}
+
+export default async function ArticlePage(props: {
+  params: Promise<Props["params"]>;
+}) {
+  const params = await props.params;
+  const { content, meta } = getArticlesFromSlug(params.slug);
 
   return (
     <section className="mt-5 flex flex-col gap-5 px-4">
@@ -24,14 +50,23 @@ const Article = async (props: {
           <ArrowLeftIcon width={20} />
           <p>back</p>
         </Link>
-        <p>{articleData.date}</p>
+        <p>{meta.formattedDate}</p>
       </div>
-      <article
-        className="article"
-        dangerouslySetInnerHTML={{ __html: articleData.contentHtml }}
+      <article className="article">
+      <MDXRemote
+        source={content}
+        options={{
+          mdxOptions: {
+            rehypePlugins: [
+              rehypeSlug,
+              [rehypeAutolinkHeadings, { behavior: "wrap" }],
+              rehypeHighlight,
+            ],
+          },
+        }}
+        components={{ Image }}
       />
+      </article>
     </section>
   );
-};
-
-export default Article;
+}

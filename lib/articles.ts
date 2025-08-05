@@ -1,83 +1,48 @@
-import fs from "fs"
-import matter from "gray-matter"
-import path from "path"
+import path from "path";
+import fs from "fs";
+import { sync } from "glob";
 import moment from "moment"
-import { remark } from "remark"
-import remarkRehype from "remark-rehype"; // To convert Markdown AST to HTML AST
-import rehypePrismPlus from "rehype-prism-plus"; // For syntax highlighting
-import rehypeStringify from "rehype-stringify"; // For outputting HTML
+import matter from "gray-matter";
+import {Article} from "@/types/index"
 
-import type { ArticleItem } from "@/types"
+const ARTICLES_PATH = path.join(process.cwd(), "/data/articles");
 
-const articlesDirectory = path.join(process.cwd(), "data/articles")
+export const getSlugs = (): string[] => {
+  const paths = sync(`${ARTICLES_PATH}/*.mdx`);
 
-const getSortedArticles = (): ArticleItem[] => {
-  const fileNames = fs.readdirSync(articlesDirectory)
+  return paths.map((path) => {
+    const parts = path.split("/");
+    const fileName = parts[parts.length - 1];
+    const [slug, _ext] = fileName.split(".");
+    return slug;
+  });
+};
 
-  const allArticlesData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "")
+export const getArticlesFromSlug = (slug: string): Article => {
+  const articlePath = path.join(ARTICLES_PATH, `${slug}.mdx`);
+  const source = fs.readFileSync(articlePath);
+  const { content, data } = matter(source);
 
-    const fullPath = path.join(articlesDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, "utf-8")
+  return {
+    content,
+    meta: {
+      slug,
+      excerpt: data.excerpt ?? "",
+      title: data.title ?? slug,
+      tags: (data.tags ?? []).sort(),
+      date: data.date, 
+      formattedDate: moment(data.date, "DD-MM-YYYY").format("MMMM Do YYYY"),
+    },
+  };
+};
 
-    const matterResult = matter(fileContents)
-
-    return {
-      id,
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      category: matterResult.data.category,
-    }
-  })
-
-  return allArticlesData.sort((a, b) => {
-    const format = "DD-MM-YYYY"
-    const dateOne = moment(a.date, format)
-    const dateTwo = moment(b.date, format)
-    if (dateOne.isBefore(dateTwo)) {
-      return -1
-    } else if (dateTwo.isAfter(dateOne)) {
-      return 1
-    } else {
-      return 0
-    }
-  })
-}
-
-export const getCategorizedArticles = (): Record<string, ArticleItem[]> => {
-    const sortedArticles = getSortedArticles()
-    const categorizedArticles: Record<string, ArticleItem[]> = {}
-
-    sortedArticles.forEach((article) => {
-        if(!categorizedArticles[article.category]){
-            categorizedArticles[article.category]= []
-        }
-        categorizedArticles[article.category].push(article)
-    })
-
-    return categorizedArticles
-}
-
-export const getArticlesData = async (id: string) => {
-  const fullPath= path.join(articlesDirectory, `${id}.md`)
-
-  const fileContents = fs.readFileSync(fullPath, "utf-8")
-  const matterResult= matter(fileContents)
-  const processedContent = await remark()
-  .use(remarkRehype)
-  .use(rehypePrismPlus, {})
-  .use(rehypeStringify)
-  .process(matterResult.content)
-
-  const contentHtml = processedContent.toString()
-
-  console.log("date", moment(matterResult.data.date, "DD-MM-YYYY").format("MMMM Do YYYY"))
-
-  return{
-    id,
-    contentHtml,
-    title: matterResult.data.title,
-    category: matterResult.data.category,
-    date: moment(matterResult.data.date, "DD-MM-YYYY").format("MMMM Do YYYY")
-  }
-}
+export const getAllArticles = (): Article[] => {
+  const articles = getSlugs()
+    .map((slug) => getArticlesFromSlug(slug))
+    .sort((a, b) => {
+      const dateA = moment(a.meta.date, "DD-MM-YYYY");
+      const dateB = moment(b.meta.date, "DD-MM-YYYY");
+      return dateB.diff(dateA); 
+    });
+  return articles;
+};

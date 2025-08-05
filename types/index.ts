@@ -14,18 +14,15 @@ export interface Project {
 }
 
 export interface Article {
-  title: string;
-  excerpt: string;
-  date: string;
-  url: string;
-  platform: 'medium' | 'dev.to' | 'other';
-  tags?: string[];
-  readTime?: string;
+  content: string;
+  meta: ArticleMeta;
 }
 
-export type ArticleItem = {
-  id: string
-  title: string
-  date: string
-  category: string
+export interface ArticleMeta {
+  excerpt: string;
+  slug: string;
+  title: string;
+  tags: string[];
+  date: string;
+  formattedDate: string;
 }
