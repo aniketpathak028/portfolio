@@ -9,7 +9,7 @@ export default function ProjectItem({
       href={item.link} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="border border-gray-800 rounded-md p-4 sm:p-6 hover:border-[var(--link-color)] transition-all duration-300"
+      className="border border-gray-800 rounded-md p-4 sm:p-6 hover:border-[var(--link-color)] w-full max-w-lg transition-all duration-300"
     >
       <div className="flex justify-between items-start mb-2">
         <h2 className="text-base sm:text-md md:text-lg font-medium">

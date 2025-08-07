@@ -5,7 +5,7 @@ export default function ArticleItem({
   item,
 }: Readonly<{ item: ArticleMeta }>) {
   return (
-    <div className="border border-gray-800 rounded-md p-4 sm:p-6 hover:border-[var(--link-color)] transition-all duration-300">
+    <div className="border border-gray-800 rounded-md p-4 sm:p-6 hover:border-[var(--link-color)] w-full max-w-lg transition-all duration-300">
       <div className="flex flex-col-reverse gap-2 sm:flex sm:flex-row sm:justify-between mb-2">
         <Link href={`/articles/${item.slug}`}>
           <h2 className="text-base sm:text-md md:text-lg font-medium text-[var(--link-color)]">
