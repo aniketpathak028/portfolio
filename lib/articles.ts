@@ -46,3 +46,15 @@ export const getAllArticles = (): Article[] => {
     });
   return articles;
 };
+
+export const getPaginatedArticles = (page: number = 1, limit: number = 3): Article[] => {
+  const articles = getAllArticles();
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  return articles.slice(startIndex, endIndex);
+};
+
+export const getTotalPages = (limit: number = 3): number => {
+  const totalArticles = getSlugs().length;
+  return Math.ceil(totalArticles / limit);
+};
