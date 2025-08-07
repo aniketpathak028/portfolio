@@ -9,7 +9,7 @@ excerpt: A highly underated cli tool that can 10x your productivity.
 
 # Learning tmux for that ultimate workflow
 
-![Tmux](/tmux.png)
+![Tmux](tmux.png)
 
 After years of using emulators like powershell and iterm, which spoils us with the ability to create windows and panes using the GUI, I had never learnt to appreciate what a cli tool like a terminal multiplexer could do!
 
@@ -21,7 +21,7 @@ So, starting right out, why do we need a terminal multiplexer? Imagine a hectic 
 
 The manual way — use an emulator of your choice and split it into windows or panes and arrange it in your desktop.. good choice! but what if it was a remote server you had to do it? with no GUI it would be a pain in the ass!
 
-Enter tmux, which is a cli tool, that lets you create sessions, windows and panes, all using simple commands! Let’s learn them.
+Enter [tmux](https://man7.org/linux/man-pages/man1/tmux.1.html), which is a cli tool, that lets you create sessions, windows and panes, all using simple commands! Let’s learn them one by one.
 
 ## Install tmux
 
@@ -77,6 +77,8 @@ ctrl + b <tmux-command> # prefix command followed by any tmux command
 
 ## sessions
 
+![Tmux Sessions](tmum-sessions.png)
+
 ```bash
 # if no sessions exist in the beginning, create using tmux command
 tmux 
@@ -97,6 +99,8 @@ tmux ls
 tmux kill-session -t <session_name/session_number>
 ```
 
+The image above shows how the sessions look like in tmux, you can see the session name, the number of windows and panes in each session, and the current working directory of each session.
+
 ## windows
 
 A window is created inside a session, and even if you detach a session, its windows and panes will be preserved in the tmux server, so you can attach to an old session anytime and expect to start working from where you left!
@@ -112,6 +116,10 @@ ctrl + b + ,
 ctrl + b + &
 ```
 
+![Tmux Windows and Panes](tmux-panes.png)
+
+This is how a window looks and you can create partitions in a window called panes!
+
 ## panes
 
 ```bash
@@ -120,9 +128,9 @@ ctrl + b + %
 # split a pane horizontally
 ctrl + b + opening quotes
 # navigate between panes
-ctrl + b + (left arrow, right arrow, up arrow, and down arrow)
+ctrl + b + # (left arrow, right arrow, up arrow, and down arrow)
 # resizing panes
-ctrl + b + ctrl + arrow key (in the direction to resize the pane)
+ctrl + b + ctrl + arrow key #(in the direction to resize the pane)
 # close the current pane
 exit
 ctrl + b + x
@@ -131,4 +139,6 @@ ctrl + b + z
 
 ```
 
-That’s all the fundamentals of tmux, I am sure there are a lot more stuff, I will keep adding to this blog as I learn more!
+That’s all the fundamentals of tmux that I have been using lately and it had definitely improved my speed and productivity, 
+I am sure there are a lot more stuff we can do with tmux, and 
+I will keep adding to this blog as I learn more!

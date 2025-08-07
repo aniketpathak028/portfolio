@@ -1,0 +1,70 @@
+---
+title: Managing dotfiles with GNU stow
+tags:
+- cli-tool
+- workflow
+- dotfiles
+date: 07-08-2025
+excerpt: manage your dotfiles like a pro using unix native tool
+---
+
+# What is GNU Stow? 🦬
+
+![GNU stow](/gnu-stow.png)
+
+Remember those config files?? those which start with a "." like .zshrc, .bashrc, .tmux.conf, .thereaintadotfileforyourbrokenlife etc.
+These files are a developer's best friends when it comes to configuring and setting up a system as it holds all your precious configs that
+you created with years of efforts!
+
+Ever since I started using Unix based machines (got a mac m4 air recently 😇) I always wanted to maintain my dotfiles repo
+but was confused as to what would be the best way to create and track it!
+
+Enter [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html) it is a symlink farm manager that allows you to manage your dotfiles and configurations in a clean and organized way. 
+It helps you keep your home directory tidy by creating symbolic links to your configuration files in a designated directory, usually `~/.config` or `~/dotfiles`.
+
+In simple words, you just create a repo for your dotfiles and Stow creates symlinks in your machine based on your repo's structure and whenever you change a config,
+it is replicated in both places! It's super simple once you understand the convention!
+
+## Install Stow
+
+```bash
+sudo apt install stow
+brew install stow
+```
+
+## How does Stow work?
+
+Let's understand pictorially how stow works! Let's imagine you have a bunch of config files you want to track in your ~ home directory! What do you do?
+you add all of these manually by copying them into you dotfiles repo and maintain them each time something changes!? 🤯 No!!!
+
+Just install stow, stow works on the concept of symbolic links which is like a pointer in programming world, so it is not an actual object but just a pointer
+to a real object!
+
+So just store all your config files in the dotfiles repo and create sym links to them in the place they should be in the machine, that way the machine thinks
+they are there in their original positions, but they actually aren't! They are all in the dotfiles repo and incase you decide to change something, just change it anywhere
+either in the repo or in the sym link, the change gets transmitted to both places.
+
+![Working of Stow](/stow-working.png)
+
+## The catch
+
+life can't be so easy right!? there is a catch to this, which is you need to maintain your config structure the exact same way like your home directory for Stow
+to do its magic! What does it mean??
+
+![Stow convention](/stow-convention.png)
+
+If you carefully observe in the image above, on the left pane is my dotfiles repo, and on the right pane is my root directory! (powers of [tmux](https://aniketpathak.me/articles/learning-tmux-for-that-ultimate-workflow) 🪬)
+Here on the left I have my configs, each config must have a dedicated folder inside the repo (for ex- tmux, zsh, bash, alacritty, vim etc), this is for separation
+of concerns and Stow to work. Inside this directory, you need to create the exact path of the config from the root (just think that this directory is the root and you need to recreate your current config!)
+
+Once this is done, all you need to do is realize the power of Stow, just remove all your original configs (only when the above step is completed 🙃!)
+
+cd into your dotfiles repo and whichever config you want to update just use the command:
+
+```bash
+cd dot # this is an alias for me, navigate into your dotfiles repo
+stow tmux # replicates tmux config in root by creating symlink
+stow alacritty # for alacritty
+```
+
+This step only works if the above step is done correctly, and that's how simple it is to use Stow!
