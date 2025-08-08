@@ -2,7 +2,6 @@ import { getAllArticles } from "@/lib/articles";
 import ArticleItem from "@/components/ArticleItem";
 import Link from "next/link";
 
-// Define the number of articles per page (consistent with /articles page)
 const ARTICLES_PER_PAGE = 3;
 
 interface Props {
@@ -14,7 +13,8 @@ interface Props {
   };
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: { params: Promise<Props["params"]> }) {
+  const params = await props.params;
   const { slug } = params;
 
   return {
@@ -32,7 +32,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TagPage({ params, searchParams }: Props) {
+export default async function TagPage(props: {
+  params: Promise<Props["params"]>;
+  searchParams?: Promise<Props["searchParams"]>;
+}) {
+  const params = await props.params;
+  const searchParams = props.searchParams ? await props.searchParams : {};
   const { slug } = params;
   const currentPage = Number(searchParams?.page) || 1;
 
