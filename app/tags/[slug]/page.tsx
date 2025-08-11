@@ -20,16 +20,16 @@ export async function generateMetadata(props: { params: Promise<Props["params"]>
   const url = `https://aniketpathak.me/tags/${slug}`;
 
   return {
-    title: `Aniket Pathak - Tag: ${slug}`,
+    title: `Tag: ${slug} - Aniket Pathak`,
     description: `Articles tagged with ${slug}`,
     openGraph: {
-      title: `Aniket Pathak - Tag: ${slug}`,
+      title: `Tag: ${slug} - Aniket Pathak`,
       description: `Articles tagged with ${slug}`,
       url: url,
       type: "website",
       images: [
         {
-          url: `https://aniketpathak.me/api/og?title=Articles%20on%20Tag:%20${encodeURIComponent(slug)}`,
+          url: `https://aniketpathak.me/api/og?title=articles%20tagged:%20${encodeURIComponent(slug)}`,
           width: 1200,
           height: 630,
           alt: `Articles tagged with ${slug}`,

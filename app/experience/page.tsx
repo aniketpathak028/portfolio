@@ -5,19 +5,19 @@ import { getExperience } from '@/lib/notion';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Aniket Pathak - Projects',
+  title: 'Experience - Aniket Pathak',
   description: 'Professional experience of Aniket Pathak.',
   openGraph: {
-    title: 'Aniket Pathak - Projects',
-    description: 'Projects developed by Aniket Pathak.',
+    title: 'Experience - Aniket Pathak',
+    description: 'Professional experience of Aniket Pathak.',
     url: 'https://aniketpathak.me/experience',
     type: 'website',
     images: [
       {
-        url: 'https://aniketpathak.me/api/og?title=Aniket%20Pathak%20Experience&description=My%20Portfolio%20Experience',
+        url: 'https://aniketpathak.me/api/og?title=experiences&description=my%20experiences',
         width: 1200,
         height: 630,
-        alt: 'Aniket Pathak Projects',
+        alt: 'Experience',
       },
     ],
     siteName: 'Aniket Pathak',

@@ -4,9 +4,24 @@ import { getTotalPages, getPaginatedArticles } from "@/lib/articles"
 import Link from "next/link";
 
 export const metadata = {
-  title: 'Aniket Pathak - Articles',
-  description: 'portfolio wesbite'
-}
+  title: 'Articles - Aniket Pathak',
+  description: 'Articles by Aniket Pathak.',
+  openGraph: {
+    title: 'Articles - Aniket Pathak',
+    description: 'Articles by Aniket Pathak.',
+    url: 'https://aniketpathak.me/articles',
+    type: 'website',
+    images: [
+      {
+        url: 'https://aniketpathak.me/api/og?title=articles&description=articles%20by%20aniket',
+        width: 1200,
+        height: 630,
+        alt: 'Articles',
+      },
+    ],
+    siteName: 'Aniket Pathak',
+  }
+};
 
 const ARTICLES_PER_PAGE = 3;
 

@@ -11,12 +11,12 @@ export const metadata = {
   description: 'A portfolio website showcasing my projects and experience.',
   openGraph: {
     title: 'Aniket Pathak - Software Engineer',
-    description: 'A portfolio website showcasing my projects and experience.',
+    description: 'I love to break and build stuff 😇',
     url: 'https://aniketpathak.me/',
     type: 'website',
     images: [
       {
-        url: 'https://aniketpathak.me/api/og?title=Aniket%20Pathak&description=Software%20Engineer',
+        url: 'https://aniketpathak.me/api/og?title=⚒️%20aniketpathak.me&description=Software%20Engineer',
         width: 1200,
         height: 630,
         alt: 'Aniket Pathak',
