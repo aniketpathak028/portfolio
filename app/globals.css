@@ -36,7 +36,7 @@ a:not([class*="bg-[rgba(127,140,237,0.2)]"]):hover {
 }
 
 .article {
-  @apply flex flex-col gap-3 text-xs sm:text-sm md:text-base tracking-wide mb-20;
+  @apply flex flex-col gap-3 text-sm md:text-base tracking-wide mb-20;
 }
 
 .article > h2 {
