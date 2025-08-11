@@ -39,7 +39,6 @@ export default async function Articles(props: {
   if (!articles || articles.length === 0) {
     return (
       <PageLayout>
-        <Navigation />
         <div className="flex items-center justify-center h-[50vh]">
           <p className="text-gray-400 text-sm sm:text-base">No articles present</p>
         </div>
@@ -49,15 +48,12 @@ export default async function Articles(props: {
 
   return (
     <PageLayout>
-      <Navigation />
-      <div className="mt-24 sm:mt-32 pb-12">
         <section className="flex flex-col gap-10">
           {articles.map((article) => (
             <ArticleItem key={article.slug} item={article} />
           ))}
         </section>
         <Pagination currentPage={currentPage} totalPages={totalPages} basePath="/articles" />
-      </div>
     </PageLayout>
   );
 }
