@@ -14,15 +14,30 @@ interface Props {
   };
 }
 
-export async function generateMetadata(props: {
-  params: Promise<Props["params"]>;
-}) {
+export async function generateMetadata(props: { params: Promise<Props["params"]> }) {
   const params = await props.params;
   const { meta } = getArticlesFromSlug(params.slug);
-  
+
+  const url = `https://aniketpathak.me/articles/${params.slug}`;
+
   return {
     title: meta.title,
     description: meta.excerpt || meta.title,
+    openGraph: {
+      title: meta.title,
+      description: meta.excerpt || meta.title,
+      url: url,
+      type: "article",
+      images: [
+        {
+          url: `https://aniketpathak.me/api/og?title=${encodeURIComponent(meta.title)}&slug=${params.slug}`,
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+      siteName: 'Aniket Pathak',
+    }
   };
 }
 

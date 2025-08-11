@@ -5,6 +5,27 @@ import Resume from "@/components/Resume";
 import Tagline from "@/components/Tagline";
 import Navigation from "@/components/Navigation";
 
+
+export const metadata = {
+  title: 'Aniket Pathak - Software Engineer',
+  description: 'A portfolio website showcasing my projects and experience.',
+  openGraph: {
+    title: 'Aniket Pathak - Software Engineer',
+    description: 'A portfolio website showcasing my projects and experience.',
+    url: 'https://aniketpathak.me/',
+    type: 'website',
+    images: [
+      {
+        url: 'https://aniketpathak.me/api/og?title=Aniket%20Pathak&description=Software%20Engineer',
+        width: 1200,
+        height: 630,
+        alt: 'Aniket Pathak',
+      },
+    ],
+    siteName: 'Aniket Pathak',
+  }
+};
+
 export default function Home() {
   return (
     <div className="flex flex-col-reverse items-center justify-center gap-4 sm:gap-8 sm:flex-row md:gap-12">

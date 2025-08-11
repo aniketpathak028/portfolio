@@ -8,10 +8,6 @@ const bricolageGrotesque = Bricolage_Grotesque({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
-export const metadata = {
-  title: 'Aniket Pathak - Software Engineer',
-  description: 'portfolio wesbite'
-}
 
 export const viewport: Viewport = {
   width: "device-width",

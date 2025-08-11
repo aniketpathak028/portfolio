@@ -17,9 +17,26 @@ export async function generateMetadata(props: { params: Promise<Props["params"]>
   const params = await props.params;
   const { slug } = params;
 
+  const url = `https://aniketpathak.me/tags/${slug}`;
+
   return {
     title: `Aniket Pathak - Tag: ${slug}`,
     description: `Articles tagged with ${slug}`,
+    openGraph: {
+      title: `Aniket Pathak - Tag: ${slug}`,
+      description: `Articles tagged with ${slug}`,
+      url: url,
+      type: "website",
+      images: [
+        {
+          url: `https://aniketpathak.me/api/og?title=Articles%20on%20Tag:%20${encodeURIComponent(slug)}`,
+          width: 1200,
+          height: 630,
+          alt: `Articles tagged with ${slug}`,
+        },
+      ],
+      siteName: 'Aniket Pathak',
+    }
   };
 }
 
