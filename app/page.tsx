@@ -8,7 +8,7 @@ import Navigation from "@/components/Navigation";
 
 export const metadata = {
   title: 'Aniket Pathak - Software Engineer',
-  description: 'A portfolio website showcasing my projects and experience.',
+  description: 'I love breaking and building stuff 😇',
   openGraph: {
     title: 'Aniket Pathak - Software Engineer',
     description: 'I love to break and build stuff 😇',
