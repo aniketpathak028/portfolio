@@ -8,9 +8,7 @@ date: 07-08-2025
 excerpt: manage your dotfiles like a pro using unix native tool
 ---
 
-# What is GNU Stow? 🦬
-
-![GNU stow](/gnu-stow.png)
+![GNU stow](/images/gnu-stow.png)
 
 Remember those config files?? those which start with a "." like .zshrc, .bashrc, .tmux.conf, .thereaintadotfileforyourbrokenlife etc.
 These files are a developer's best friends when it comes to configuring and setting up a system as it holds all your precious configs that
@@ -44,14 +42,14 @@ So just store all your config files in the dotfiles repo and create sym links to
 they are there in their original positions, but they actually aren't! They are all in the dotfiles repo and incase you decide to change something, just change it anywhere
 either in the repo or in the sym link, the change gets transmitted to both places.
 
-![Working of Stow](/stow-working.png)
+![Working of Stow](/images/stow-working.png)
 
 ## The catch
 
 life can't be so easy right!? there is a catch to this, which is you need to maintain your config structure the exact same way like your home directory for Stow
 to do its magic! What does it mean??
 
-![Stow convention](/stow-convention.png)
+![Stow convention](/images/stow-convention.png)
 
 If you carefully observe in the image above, on the left pane is my dotfiles repo, and on the right pane is my root directory! (powers of [tmux](https://aniketpathak.me/articles/learning-tmux-for-that-ultimate-workflow) 🪬)
 Here on the left I have my configs, each config must have a dedicated folder inside the repo (for ex- tmux, zsh, bash, alacritty, vim etc), this is for separation

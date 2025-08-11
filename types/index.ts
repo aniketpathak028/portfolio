@@ -26,3 +26,24 @@ export interface ArticleMeta {
   date: string;
   formattedDate: string;
 }
+
+export interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
+}
+
+export interface ArticleProps {
+  params: {
+    slug: string;
+  };
+}
+
+export interface TagProps {
+  params: {
+    slug: string;
+  };
+  searchParams?: {
+    page?: string;
+  };
+}

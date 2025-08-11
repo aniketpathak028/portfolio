@@ -1,11 +1,4 @@
 import { ImageResponse } from 'next/og';
-import { Bricolage_Grotesque } from "next/font/google";
-
-const bricolageGrotesque = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
-
 export const runtime = 'edge';
 
 export async function GET(request: Request) {

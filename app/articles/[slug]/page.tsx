@@ -6,15 +6,14 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { getArticlesFromSlug, getSlugs } from "@/lib/articles";
+import { ArticleProps } from "@/types";
 import "highlight.js/styles/atom-one-dark.css";
+import PageLayout from "@/components/PageLayout";
+import readingTime from "reading-time";
+import ArticleHeader from "@/components/ArticleHeader";
+import ArticleMeta from "@/components/ArticleMeta";
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-export async function generateMetadata(props: { params: Promise<Props["params"]> }) {
+export async function generateMetadata(props: { params: Promise<ArticleProps["params"]> }) {
   const params = await props.params;
   const { meta } = getArticlesFromSlug(params.slug);
 
@@ -50,38 +49,42 @@ export async function generateStaticParams() {
 }
 
 export default async function ArticlePage(props: {
-  params: Promise<Props["params"]>;
+  params: Promise<ArticleProps["params"]>;
 }) {
   const params = await props.params;
   const { content, meta } = getArticlesFromSlug(params.slug);
 
+  const stats = readingTime(content);
+  const readingTimeText = stats.text;
+
   return (
-    <section className="mt-5 flex flex-col gap-5 px-4">
-      <div className="flex justify-between max-w-3xl mx-auto w-full">
-        <Link
-          href={"/articles"}
-          className="flex flex-row gap-1 place-items-center"
-        >
-          <ArrowLeftIcon width={20} />
-          <p>back</p>
-        </Link>
-        <p>{meta.formattedDate}</p>
-      </div>
-      <article className="article">
-      <MDXRemote
-        source={content}
-        options={{
-          mdxOptions: {
-            rehypePlugins: [
-              rehypeSlug,
-              [rehypeAutolinkHeadings, { behavior: "wrap" }],
-              rehypeHighlight,
-            ],
-          },
-        }}
-        components={{ Image }}
-      />
-      </article>
-    </section>
+      <section className="mx-auto w-full max-w-2xl px-4 sm:px-8 mt-5 mb-24 flex flex-col gap-6">
+        <div className="mb-6">
+          <Link
+            href="/articles"
+            className="flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition-colors"
+          >
+            <ArrowLeftIcon width={18} />
+            <span>Back</span>
+          </Link>
+        </div>
+        <ArticleHeader title={meta.title} excerpt={meta.excerpt} />
+        <ArticleMeta date={meta.formattedDate} readingTime={readingTimeText} />
+        <article className="article">
+          <MDXRemote
+            source={content}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [
+                  rehypeSlug,
+                  [rehypeAutolinkHeadings, { behavior: "wrap" }],
+                  rehypeHighlight,
+                ],
+              },
+            }}
+            components={{ Image }}
+          />
+        </article>
+      </section>
   );
 }

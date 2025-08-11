@@ -1,19 +1,12 @@
 import { getAllArticles } from "@/lib/articles";
 import ArticleItem from "@/components/ArticleItem";
+import Pagination from "@/components/Pagination";
 import Link from "next/link";
+import { TagProps } from "@/types"
 
 const ARTICLES_PER_PAGE = 3;
 
-interface Props {
-  params: {
-    slug: string;
-  };
-  searchParams?: {
-    page?: string;
-  };
-}
-
-export async function generateMetadata(props: { params: Promise<Props["params"]> }) {
+export async function generateMetadata(props: { params: Promise<TagProps["params"]> }) {
   const params = await props.params;
   const { slug } = params;
 
@@ -50,8 +43,8 @@ export async function generateStaticParams() {
 }
 
 export default async function TagPage(props: {
-  params: Promise<Props["params"]>;
-  searchParams?: Promise<Props["searchParams"]>;
+  params: Promise<TagProps["params"]>;
+  searchParams?: Promise<TagProps["searchParams"]>;
 }) {
   const params = await props.params;
   const searchParams = props.searchParams ? await props.searchParams : {};
@@ -77,12 +70,11 @@ export default async function TagPage(props: {
           <div className="flex gap-2 justify-center py-4">
             tag: 
             <span
-            className="text-xs px-2 py-1 text-gray-400 bg-gray-800 rounded"
-          >
-            { slug}
-          </span>
+              className="text-xs px-2 py-1 text-gray-400 bg-gray-800 rounded"
+            >
+              {slug}
+            </span>
           </div>
-           
         </div>
       </div>
       <div className="mt-24 sm:mt-32 pb-12">
@@ -101,42 +93,11 @@ export default async function TagPage(props: {
         )}
 
         {articleMetas.length > 0 && (
-          <div className="mt-8 flex justify-center items-center gap-2 sm:gap-3 md:gap-4">
-            {currentPage > 1 && (
-              <Link
-                href={`/tags/${slug}?page=${currentPage - 1}`}
-                className="px-3 py-2 sm:px-4 sm:py-2 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                >
-                  <path d="M13 16L7 10L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span className="text-xs sm:text-sm md:text-base">prev</span>
-              </Link>
-            )}
-            {currentPage < totalPages && (
-              <Link
-                href={`/tags/${slug}?page=${currentPage + 1}`}
-                className="px-3 py-2 sm:px-4 sm:py-2 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base"
-              >
-                <span className="text-xs sm:text-sm md:text-base">next</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                >
-                  <path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-            )}
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            basePath={`/tags/${slug}`}
+          />
         )}
       </div>
     </div>
