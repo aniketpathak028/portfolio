@@ -14,7 +14,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://aniketpathak.me/api/og?title=experiences&description=my%20experiences',
+        url: 'https://aniketpathak.me/api/og?title=Experiences&description=⚒️%20aniketpathak.me',
         width: 1200,
         height: 630,
         alt: 'Experience',

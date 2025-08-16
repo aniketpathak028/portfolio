@@ -10,17 +10,8 @@ export default function Tagline() {
         </span>
       </p>
       <p className="mt-2">
-        currently working at{" "}
-        <Link
-          href="https://www.nokia.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center hover:text-red-300 transition duration-300 ease-in-out"
-        >
-          nokia
-        </Link>
+        connect with me on 👇
       </p>
-      
     </div>
   );
 }

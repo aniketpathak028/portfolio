@@ -28,7 +28,7 @@ export async function generateMetadata(props: { params: Promise<ArticleProps["pa
       type: "article",
       images: [
         {
-          url: `https://aniketpathak.me/api/og?title=${encodeURIComponent(meta.title)}&slug=${params.slug}`,
+          url: `https://aniketpathak.me/api/og?title=${encodeURIComponent(meta.title)}&description=⚒️%20aniketpathak.me&slug=${params.slug}`,
           width: 1200,
           height: 630,
           alt: meta.title,

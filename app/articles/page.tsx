@@ -2,7 +2,6 @@ import { getAllArticles } from "@/lib/articles";
 import ArticleItem from "@/components/ArticleItem";
 import Pagination from "@/components/Pagination";
 import PageLayout from "@/components/PageLayout";
-import TagSearch from "@/components/TagSearch";
 
 export const metadata = {
   title: 'Articles - Aniket Pathak',
@@ -60,10 +59,6 @@ export default async function ArticlesPage({
   return (
     <PageLayout>
       <div className="flex flex-col">
-        {/* <div className="sm:top-20 z-40 bg-[var(--background-rgb)] pb-4">
-          <TagSearch availableTags={allAvailableTags} currentTags={selectedTags} />
-        </div> */}
-
         <div className="pb-12">
           {articleMetas.length === 0 ? (
             <div className="flex items-center justify-center h-[50vh]">

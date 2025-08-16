@@ -5,9 +5,10 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const title = searchParams.get('title') || 'My Portfolio';
-  const slug = searchParams.get('slug');
+  const description = searchParams.get('description') || '';
+
   const imageStyle = {
-    backgroundColor: '#121212', 
+    backgroundColor: '#121212',
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -22,10 +23,20 @@ export async function GET(request: Request) {
     fontFamily: '"Inter", sans-serif',
   };
 
+  const descriptionStyle = {
+    fontSize: 30,
+    fontWeight: 400,
+    color: '#a0a0a0',
+    marginTop: '20px',
+  };
+
   return new ImageResponse(
     (
       <div style={imageStyle}>
-        {title}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {title}
+          {description && <div style={descriptionStyle}>{description}</div>}
+        </div>
       </div>
     ),
     {
