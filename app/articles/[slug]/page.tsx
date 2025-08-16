@@ -8,7 +8,6 @@ import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { getArticlesFromSlug, getSlugs } from "@/lib/articles";
 import { ArticleProps } from "@/types";
 import "highlight.js/styles/atom-one-dark.css";
-import PageLayout from "@/components/PageLayout";
 import readingTime from "reading-time";
 import ArticleHeader from "@/components/ArticleHeader";
 import ArticleMeta from "@/components/ArticleMeta";
@@ -69,7 +68,7 @@ export default async function ArticlePage(props: {
           </Link>
         </div>
         <ArticleHeader title={meta.title} excerpt={meta.excerpt} />
-        <ArticleMeta date={meta.formattedDate} readingTime={readingTimeText} />
+        <ArticleMeta date={meta.formattedDate} readingTime={readingTimeText} articleSlug={meta.slug}/>
         <article className="article">
           <MDXRemote
             source={content}
