@@ -12,6 +12,12 @@
   --link-hover-color: #5867e8;
 }
 
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
