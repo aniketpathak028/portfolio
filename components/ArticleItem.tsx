@@ -16,16 +16,11 @@ export default function ArticleItem({
       <p className="text-sm sm:text-md text-gray-300 mb-4">{item.excerpt}</p>
       <div className="flex flex-wrap gap-2">
         {item.tags.map((tag) => (
-          <Link
-              href={`/tags/${tag}`}
-              key={tag} 
-              >
           <span
             className="text-xs px-2 py-1 text-gray-400 bg-gray-800 rounded"
           >
             {tag}
           </span>
-          </Link>
         ))}
       </div>
     </div>
