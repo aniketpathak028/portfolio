@@ -93,7 +93,7 @@ export default function TagSearch({ availableTags, currentTags }: TagSearchProps
 
   return (
     <div className="mb-8">
-      <div className="w-full sm:w-1/2 md:w-3/4 mx-auto" ref={containerRef}>
+      <div className="w-1/2 md:w-3/4 mx-auto" ref={containerRef}>
         <SearchInput
           searchTerm={searchTerm}
           onSearchChange={handleSearchChange}

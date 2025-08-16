@@ -60,7 +60,7 @@ export default async function ArticlesPage({
   return (
     <PageLayout>
       <div className="flex flex-col">
-        <div className="sticky top-16 sm:top-20 z-40 bg-[var(--background-rgb)] pb-4">
+        <div className="sm:top-20 z-40 bg-[var(--background-rgb)] pb-4">
           <TagSearch availableTags={allAvailableTags} currentTags={selectedTags} />
         </div>
 
