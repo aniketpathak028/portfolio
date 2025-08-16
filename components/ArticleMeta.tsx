@@ -50,7 +50,7 @@ export default function ArticleMeta({ date, readingTime, articleSlug }: { date: 
           )}
           <button
             onClick={handleCopyClick}
-            className="flex items-center gap-1 p-1 rounded-md transition-colors duration-200
+            className="flex items-center gap-1 p-1 rounded-md cursor-pointer transition-colors duration-200
                        text-[var(--link-color)] hover:text-[var(--link-hover-color)]"
             aria-label="Copy article URL to clipboard"
           >
