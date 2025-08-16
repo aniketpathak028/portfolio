@@ -40,7 +40,14 @@ export default function ArticleMeta({ date, readingTime, articleSlug }: { date: 
       </div>
 
       {articleSlug && (
-        <div className="relative flex items-center gap-2">
+        <div className="flex items-center gap-2">
+          {copyStatus !== 'idle' && (
+            <span className={`px-2 py-1 rounded whitespace-nowrap text-xs ${
+              copyStatus === 'copied' ? 'bg-gray-800 text-[var(--link-color)]' : 'bg-red-800 text-red-400'
+            }`}>
+              {copyStatus === 'copied' ? 'copied!' : 'error!'}
+            </span>
+          )}
           <button
             onClick={handleCopyClick}
             className="flex items-center gap-1 p-1 rounded-md transition-colors duration-200
@@ -48,16 +55,6 @@ export default function ArticleMeta({ date, readingTime, articleSlug }: { date: 
             aria-label="Copy article URL to clipboard"
           >
             <ShareIcon className="w-5 h-5" />
-            {copyStatus === 'copied' && (
-              <span className="absolute -right-16 top-1/2 -translate-y-1/2 bg-gray-800 text-[var(--link-color)] text-xs px-2 py-1 rounded whitespace-nowrap">
-                Copied!
-              </span>
-            )}
-            {copyStatus === 'error' && (
-              <span className="absolute -right-16 top-1/2 -translate-y-1/2 bg-red-800 text-[var(--link-color)] text-xs text-red-400 px-2 py-1 rounded whitespace-nowrap">
-                Error!
-              </span>
-            )}
           </button>
         </div>
       )}
