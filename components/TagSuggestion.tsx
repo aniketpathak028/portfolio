@@ -13,13 +13,13 @@ export default function TagSuggestions({ showSuggestions, filteredTags, onTagCli
   }
 
   return (
-    <div className="absolute z-50 mt-1 w-1/2 md:w-3/4 bg-gray-800 border border-gray-700 rounded shadow-lg max-h-60 overflow-y-auto">
+    <div className="absolute z-50 mt-1 bg-gray-800 border border-gray-700 rounded shadow-lg max-h-60 overflow-y-auto">
       {filteredTags.length > 0 ? (
         filteredTags.map((tag) => (
           <button
             key={tag}
             onClick={() => onTagClick(tag)}
-            className={`block w-full text-left px-4 py-2 hover:bg-gray-700 ${getTagStyles(tag)}`}
+            className={`block text-left px-4 py-2 hover:bg-gray-700 ${getTagStyles(tag)}`}
           >
             {tag}
           </button>
