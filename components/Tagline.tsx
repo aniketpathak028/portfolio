@@ -10,7 +10,7 @@ export default function Tagline() {
         </span>
       </p>
       <p className="mt-2">
-        more than tech 👉 <Link href={"https://zet.aniketpathak.me"}>zettlekasten</Link>
+        for more 👉 <Link href={"https://zet.aniketpathak.me"}>zettlekasten</Link>
       </p>
     </div>
   );
