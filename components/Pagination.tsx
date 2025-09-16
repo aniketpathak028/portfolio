@@ -7,7 +7,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       {currentPage > 1 && (
         <Link
           href={`${basePath}?page=${currentPage - 1}`}
-          className="px-3 py-2 sm:px-4 sm:py-2 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base"
+          className="px-3 sm:px-4 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-sm md:text-base"
         >
           👈 prev
         </Link>
@@ -15,7 +15,7 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       {currentPage < totalPages && (
         <Link
           href={`${basePath}?page=${currentPage + 1}`}
-          className="px-3 py-2 sm:px-4 sm:py-2 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base"
+          className="px-3 sm:px-4 rounded-md text-blue-500 flex items-center gap-1 sm:gap-2 text-sm md:text-base"
         >
           next 👉
         </Link>
